@@ -49,8 +49,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              top: -40,
-              left: -40,
+              top: -50,
+              left: -50,
               child: Container(
                 width: 100,
                 height: 100,
@@ -62,6 +62,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize:
+                  MainAxisSize.min, // Shrinks the column to the minimum height
               children: [
                 Expanded(
                   child: PageView.builder(
@@ -74,87 +76,87 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     itemCount: onboardingData.length,
                     itemBuilder: (context, index) {
                       return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  DesignConfig.setPngPath(
-                                      onboardingData[index]["image"]!),
-                                  height: 498.0,
-                                  width: width,
-                                  fit: BoxFit.cover,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: [
+                              Image.asset(
+                                DesignConfig.setPngPath(
+                                  onboardingData[index]["image"]!,
                                 ),
-                                Positioned(
-                                  top: 430,
-                                  left: 170,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: List.generate(
-                                        onboardingData.length, (dotIndex) {
-                                      return Container(
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 4.0),
-                                        height: 8.0,
-                                        width: 8.0,
-                                        decoration: BoxDecoration(
-                                          color: _currentIndex == dotIndex
-                                              ? Colors
-                                                  .green // Dark green for active page
-                                              : Colors.green[
-                                                  100], // Light green for inactive pages
-                                          shape: BoxShape.circle,
-                                        ),
-                                      );
-                                    }),
+                                height: 490.0,
+                                width: width,
+                                fit: BoxFit.cover,
+                              ),
+                              Positioned(
+                                bottom: 40.0,
+                                left:
+                                    MediaQuery.of(context).size.width / 2 - 20,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List.generate(onboardingData.length,
+                                      (dotIndex) {
+                                    return Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 4.0),
+                                      height: 8.0,
+                                      width: 8.0,
+                                      decoration: BoxDecoration(
+                                        color: _currentIndex == dotIndex
+                                            ? appColor
+                                            : Colors.green[100],
+                                        shape: BoxShape.circle,
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 17.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  onboardingData[index]["title"]!,
+                                  style: const TextStyle(
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: Manrope),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 20.0),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Text(
+                                    onboardingData[index]["subtitle"]!,
+                                    style: const TextStyle(
+                                        fontSize: 15.0,
+                                        color: greayLightColor,
+                                        fontWeight: FontWeight.w500),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 17.0, right: 17),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    onboardingData[index]["title"]!,
-                                    style: const TextStyle(
-                                        fontSize: 24.0,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: Manrope),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  const SizedBox(height: 20.0),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10.0, right: 10),
-                                    child: Text(
-                                      onboardingData[index]["subtitle"]!,
-                                      style: const TextStyle(
-                                          fontSize: 15.0,
-                                          color: greayLightColor,
-                                          fontWeight: FontWeight.w500),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ]);
+                          ),
+                        ],
+                      );
                     },
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 10.0), // Space between text and button
                 // Button or next page control
                 _currentIndex == onboardingData.length - 1
                     ? ButtonContainer(
                         top: 8,
                         status: false,
                         borderColor: appColor,
-                        bottom: 0,
+                        bottom: 5,
                         text: getstartedLbl,
                         fontSize: 16,
                         color: appColor,
@@ -189,14 +191,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
               ],
             ),
+
             // Small green dot on the right side of image
             Positioned(
-              right: 73,
-              top: 140,
+              right: 75,
+              top: 120,
               child: Container(
                 width: 16,
                 height: 16,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: appColor,
                   shape: BoxShape.circle,
                 ),

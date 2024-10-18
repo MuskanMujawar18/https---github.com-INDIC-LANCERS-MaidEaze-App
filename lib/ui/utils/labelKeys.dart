@@ -19,3 +19,6 @@ const String mpinsubLbl = "Please enter your 4-digit pin";
 const String continueLbl = "Continue";
 const String viewallLbl = "View All";
 const String categoriesLbl = "Categories";
+const String notificationsLbl = "Notifications";
+const String applyLbl = "Apply";
+const String locationmanualyLbl = "Select Location Manually";

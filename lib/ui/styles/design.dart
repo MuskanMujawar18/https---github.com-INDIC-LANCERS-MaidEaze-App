@@ -162,23 +162,6 @@ class DesignConfig {
         ]);
   }
 
-  /* static BoxDecoration boxCurveBottomBarShadow() {
-    return const BoxDecoration(
-        color: ColorsRes.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25.0),
-          topRight: Radius.circular(25.0),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: ColorsRes.shadowBottomBar,
-            spreadRadius: 0,
-            blurRadius: 5,
-            offset: Offset(0, -5),
-          )
-        ]);
-  } */
-
   static BoxDecoration boxDecorationContainerCardShadow(
       Color color,
       Color shadowColor,
@@ -290,40 +273,6 @@ class DesignConfig {
             width: width!,
             fit: BoxFit.cover,
           );
-  }
-
-  static appBar(BuildContext context, double? width,
-      {required int index, required String title}) {
-    return AppBar(
-        toolbarHeight: width! / 2.5,
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: white,
-        leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Column(
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 15),
-                    child: Image.asset("assets/images/png/left_arrow.png")),
-                // const SizedBox(
-                //   height: 50,
-                // ),
-              ],
-            )),
-        title: Text(
-          title.isEmpty ? "STEP $index" : title,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: black,
-              fontFamily: Poppins,
-              fontSize: 24,
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.2),
-        ));
   }
 
   static Widget dropDownA(
