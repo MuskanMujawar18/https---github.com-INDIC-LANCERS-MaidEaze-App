@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/styles/design.dart';
@@ -13,10 +12,10 @@ class NotificationCard extends StatelessWidget {
 
   const NotificationCard({
     Key? key,
-    this.request = "", // Default value to empty string
-    this.duration = "", // Default value to empty string
-    this.moredetailed = "", // Default value to empty string
-    this.imageUrl = "", // Default value to empty string
+    this.request = "",
+    this.duration = "",
+    this.moredetailed = "",
+    this.imageUrl = "",
   }) : super(key: key);
 
   @override
@@ -36,7 +35,7 @@ class NotificationCard extends StatelessWidget {
                     height: 48,
                     width: 48,
                   )
-                : Icon(Icons.image, size: 40)), // Add default placeholder
+                : Icon(Icons.image, size: 40)),
         title: Row(
           children: [
             Text(
@@ -73,9 +72,7 @@ class NotificationCard extends StatelessWidget {
             ),
           ),
         ),
-        onTap: () {
-          // Handle card tap if necessary
-        },
+        onTap: () {},
       ),
     );
   }

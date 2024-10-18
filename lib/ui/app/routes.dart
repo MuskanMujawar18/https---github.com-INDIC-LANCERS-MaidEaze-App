@@ -9,19 +9,18 @@ import 'package:maideazw/ui/onboardingScreens/onboarding.dart';
 import 'package:maideazw/ui/search_screen/searchScreen.dart';
 import 'package:maideazw/ui/select_location/select_location.dart';
 import 'package:maideazw/ui/splash_screen.dart';
+import 'package:maideazw/ui/top_helpers/top_helper.dart';
 
 class Routes {
   static const splash = '/';
   static const onboarding = '/onboarding';
-  static const onboardingsecond = '/onboardingsecond';
-  static const onboardingthird = '/onboardingthird';
   static const loginpage = '/loginpage';
   static const otppage = '/otppage';
   static const mpinscreen = '/mpinscreen';
   static const homepage = '/homepage';
   static const selectlocation = '/selectlocation';
   static const searchscreen = '/searchscreen';
-  static const selectrole = '/selectrole';
+  static const tophelper = '/tophelper';
   static const notification = '/notification';
   static const notificationfilterscreen = '/notificationfilterscreen';
   static String currentRoute = splash;
@@ -52,6 +51,8 @@ class Routes {
       case notificationfilterscreen:
         return CupertinoPageRoute(
             builder: (context) => NotificationFilterScreen());
+      case tophelper:
+        return CupertinoPageRoute(builder: (context) => TopHelper());
       default:
         return CupertinoPageRoute(builder: (context) => const SizedBox());
     }
