@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:maideazw/ui/global/botton_nav.dart';
 import 'package:maideazw/ui/global/helper_card.dart';
 import 'package:maideazw/ui/global/search_field.dart';
+import 'package:maideazw/ui/helper%20details/helper_description.dart';
 import 'package:maideazw/ui/notification/notification.dart';
 import 'package:maideazw/ui/search_screen/searchScreen.dart';
 import 'package:maideazw/ui/select_location/select_location.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/styles/design.dart';
 import 'package:maideazw/ui/top_helpers/top_helper.dart';
-import 'package:maideazw/ui/top_helpers/nearest_screen.dart';
 import 'package:maideazw/ui/utils/constansts.dart';
 import 'package:maideazw/ui/utils/imagesDefine.dart';
 
@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   double? height, width;
   PageController _pageController = PageController(); // Controls the page scroll
   int _currentPage = 0;
+  String _selectedLanguage = 'English';
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +34,10 @@ class _HomePageState extends State<HomePage> {
       {"image": cleaning, "name": 'Cleaning'},
       {"image": babysitting, "name": 'Babysitting'},
       {"image": pet_care, "name": 'Pet Care'},
-      {"image": patient_care, "name": 'Patient        Care'},
-      {"image": vessel_cleaning, "name": 'Vessel Cleaning'},
-      {"image": laundry_service, "name": 'Laundry Service'},
-      {"image": day_night_service, "name": '24 Hours Service'},
+      {"image": patient_care, "name": 'Patient\nCare'},
+      {"image": vessel_cleaning, "name": 'Vessel\nCleaning'},
+      {"image": laundry_service, "name": 'Laundry\nService'},
+      {"image": day_night_service, "name": 'Full \nTime'},
     ];
 
     final List<Map<String, dynamic>> topHelpers = [
@@ -118,7 +119,12 @@ class _HomePageState extends State<HomePage> {
               top: Radius.circular(30),
             ),
           ),
-          builder: (ctx) => locationSelection(context));
+          builder: (ctx) {
+            return StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
+              return locationSelection(context);
+            });
+          });
     }
 
     width = MediaQuery.of(context).size.width;
@@ -183,8 +189,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    const Spacer(), // Push the language and notification icons to the right
-
+                    const Spacer(),
                     GestureDetector(
                       onTap: () => openLanguage(context),
                       child: Image.asset(
@@ -226,17 +231,29 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     children: <Widget>[
-                      Image.asset(
-                        DesignConfig.setPngPath("banner"),
-                        fit: BoxFit.cover,
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset(
+                          DesignConfig.setPngPath("banner"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      Image.asset(
-                        DesignConfig.setPngPath("banner"),
-                        fit: BoxFit.cover,
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset(
+                          DesignConfig.setPngPath("banner"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      Image.asset(
-                        DesignConfig.setPngPath("banner"),
-                        fit: BoxFit.cover,
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Image.asset(
+                          DesignConfig.setPngPath("banner"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ],
                   ),
@@ -275,15 +292,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      top: 8.0), // Padding around the GridView
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: GridView.builder(
                     itemCount: services.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4, // Number of columns
+                      crossAxisCount: 4,
                       mainAxisSpacing: 10.0,
                       crossAxisSpacing: 14.0,
                       childAspectRatio: 0.75,
@@ -353,22 +369,30 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                ListView.builder(
-                  itemCount: topHelpers.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    var helper = topHelpers[index];
-                    return TopHelperCard(
-                      name: helper['name'],
-                      distance: helper['distance'],
-                      rating: helper['rating'],
-                      price: helper['price'],
-                      isFavorite: helper['isFavorite'],
-                      imageUrl: helper['imageUrl'],
-                      rank: helper['rank'],
-                    );
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HelperDescription()));
                   },
+                  child: ListView.builder(
+                    itemCount: topHelpers.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      var helper = topHelpers[index];
+                      return TopHelperCard(
+                        name: helper['name'],
+                        distance: helper['distance'],
+                        rating: helper['rating'],
+                        price: helper['price'],
+                        isFavorite: helper['isFavorite'],
+                        imageUrl: helper['imageUrl'],
+                        rank: helper['rank'],
+                      );
+                    },
+                  ),
                 ),
                 const SizedBox(
                   height: 30,
@@ -451,39 +475,19 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 15),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: greayColor)),
               child: ListView(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFD7EEE6), // Highlight color
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 8, top: 12, bottom: 12),
-                      child: Text(
-                        'English',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: Manrope,
-                          color: appColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Other languages
-                  _buildLanguageItem("हिन्दी"),
-                  _buildLanguageItem("मराठी"),
-                  _buildLanguageItem("తెలుగు"),
-                  _buildLanguageItem("தமிழ்"),
-                  _buildLanguageItem("മലയാളം"),
-                  _buildLanguageItem("ಕನ್ನಡ"),
+                  _buildLanguageItem('English'),
+                  _buildLanguageItem('हिन्दी'),
+                  _buildLanguageItem('मराठी'),
+                  _buildLanguageItem('తెలుగు'),
+                  _buildLanguageItem('தமிழ்'),
+                  _buildLanguageItem('മലയാളം'),
+                  _buildLanguageItem('ಕನ್ನಡ'),
                 ],
               ),
             ),
@@ -495,7 +499,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget addressSelectionSheet(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.fromLTRB(24, 24, 24, 36),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 34),
         //decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
         height: 288,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -533,7 +537,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             'Home',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 12,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Manrope',
                             ),
@@ -569,7 +573,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             'Office',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 12,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Manrope',
                             ),
@@ -606,15 +610,32 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildLanguageItem(String language) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Text(
-        language,
-        style: const TextStyle(
-          fontSize: 12,
-          fontFamily: Manrope,
-          fontWeight: FontWeight.w500,
-          color: black, // Color for non-selected items
+    bool isSelected = _selectedLanguage == language; // Check if selected
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedLanguage = language; // Update selected language
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color(0xFFD7EEE6) // Highlight selected language
+              : Colors.transparent, // Default color for unselected
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8, top: 12, bottom: 12),
+          child: Text(
+            language,
+            style: TextStyle(
+              fontSize: 12,
+              fontFamily: 'Manrope',
+              fontWeight: FontWeight.w500,
+              color: isSelected ? appColor : black, // Change color on selection
+            ),
+          ),
         ),
       ),
     );

@@ -39,7 +39,7 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
                 Padding(
                     padding: const EdgeInsets.only(
                         left: 10.0, right: 10.0, top: 320, bottom: 20),
-                    child: Positioned(
+                    child: SizedBox(
                       width: width,
                       height: 242,
                       child: Container(

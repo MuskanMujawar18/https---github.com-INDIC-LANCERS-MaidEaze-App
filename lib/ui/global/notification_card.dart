@@ -8,6 +8,7 @@ class NotificationCard extends StatelessWidget {
   final String request;
   final String duration;
   final String moredetailed;
+  final Color? moredetailedColor;
   final String imageUrl;
 
   const NotificationCard({
@@ -15,6 +16,7 @@ class NotificationCard extends StatelessWidget {
     this.request = "",
     this.duration = "",
     this.moredetailed = "",
+    required this.moredetailedColor,
     this.imageUrl = "",
   }) : super(key: key);
 
@@ -36,39 +38,40 @@ class NotificationCard extends StatelessWidget {
                     width: 48,
                   )
                 : Icon(Icons.image, size: 40)),
-        title: Row(
-          children: [
-            Text(
-              request,
-              style: const TextStyle(
-                fontFamily: Manrope,
-                fontSize: 10,
-                color: black,
-                fontWeight: FontWeight.w500,
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: request,
+                style: const TextStyle(
+                  fontFamily: Manrope,
+                  fontSize: 12,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-            const SizedBox(width: 4),
-            Text(
-              duration,
-              style: const TextStyle(
-                fontFamily: Manrope,
-                fontSize: 10,
-                color: greayLightColor,
-                fontWeight: FontWeight.w500,
+              TextSpan(
+                text: ' $duration',
+                style: const TextStyle(
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         subtitle: Align(
           alignment: Alignment.topLeft,
           child: Text(
             moredetailed,
             textAlign: TextAlign.left,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: Manrope,
               fontSize: 10,
               fontWeight: FontWeight.w600,
-              color: greayLightColor,
+              color: moredetailedColor,
             ),
           ),
         ),

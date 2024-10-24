@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:maideazw/ui/app/routes.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/styles/design.dart';
 import 'package:maideazw/ui/utils/imagesDefine.dart';
@@ -10,7 +11,7 @@ Widget BottomNav(
     required double height,
     required BuildContext context}) {
   return Container(
-    padding: EdgeInsets.only(left: 10, right: 10, top: 8),
+    padding: EdgeInsets.only(left: 20, right: 20, top: 8),
     // width: width,
     // height: height,
     decoration: const BoxDecoration(
@@ -40,9 +41,10 @@ Widget BottomNav(
                 width: 200,
                 name: bottom_home,
                 onTap: () {
-                  // Future.delayed(Duration(milliseconds: 10), () {
-                  //   Navigator.pushNamed(context, Routes.home, arguments: {});
-                  // });
+                  Future.delayed(Duration(milliseconds: 10), () {
+                    Navigator.pushNamed(context, Routes.homepage,
+                        arguments: {});
+                  });
                 }),
         from == bottom_booking
             ? returnNav(
@@ -55,10 +57,10 @@ Widget BottomNav(
                 width: 200,
                 name: bottom_booking,
                 onTap: () {
-                  // Future.delayed(Duration(milliseconds: 10), () {
-                  //   Navigator.pushNamed(context, Routes.allotcoupons,
-                  //       arguments: {"from": "event"});
-                  // });
+                  Future.delayed(Duration(milliseconds: 10), () {
+                    Navigator.pushNamed(context, Routes.mybooking,
+                        arguments: {"from": "event"});
+                  });
                 }),
         from == bottom_fav
             ? returnNav(
@@ -68,10 +70,10 @@ Widget BottomNav(
                 width: 200,
                 name: bottom_fav,
                 onTap: () {
-                  // Future.delayed(const Duration(milliseconds: 10), () {
-                  //   Navigator.pushNamed(context, Routes.collabhistory,
-                  //       arguments: {"from": "event"});
-                  // });
+                  Future.delayed(const Duration(milliseconds: 10), () {
+                    Navigator.pushNamed(context, Routes.favscreen,
+                        arguments: {"from": "event"});
+                  });
                 }),
         from == bottom_profile
             ? returnNav(
@@ -84,10 +86,10 @@ Widget BottomNav(
                 width: 200,
                 name: bottom_profile,
                 onTap: () {
-                  // Future.delayed(Duration(milliseconds: 10), () {
-                  //   Navigator.pushNamed(context, Routes.couponDetailed,
-                  //       arguments: {});
-                  // });
+                  Future.delayed(Duration(milliseconds: 10), () {
+                    Navigator.pushNamed(context, Routes.profilescreen,
+                        arguments: {});
+                  });
                 }),
       ],
     ),

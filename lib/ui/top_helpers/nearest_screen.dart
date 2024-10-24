@@ -79,6 +79,8 @@ class _NearestScreenState extends State<NearestScreen> {
       'Mobility Assistance'
     ],
     'Laundry': ['Washing Clothes', 'Ironing', 'Folding'],
+    'Vessel Cleaning': ['No Sub-category'],
+    'Full-Time': ['No Sub-category']
   };
 
   @override
@@ -180,7 +182,7 @@ class _NearestScreenState extends State<NearestScreen> {
                     ),
                     Card(
                       child: Container(
-                        color: Colors.lightGreen[100],
+                        color: Color.fromRGBO(181, 228, 202, 0.25),
                         height: 20,
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -295,7 +297,7 @@ class _NearestScreenState extends State<NearestScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedTopic == topic
-                                ? Colors.lightGreen[100]
+                                ? Color.fromRGBO(181, 228, 202, 0.25)
                                 : Colors.white,
                           ),
                           child: Text(
@@ -345,7 +347,7 @@ class _NearestScreenState extends State<NearestScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedFilters[selectedTopic] == option
-                                ? Colors.lightGreen[100]
+                                ? Color.fromRGBO(181, 228, 202, 0.25)
                                 : Colors.white,
                           ),
                           child: Text(
@@ -355,7 +357,7 @@ class _NearestScreenState extends State<NearestScreen> {
                               fontFamily: Manrope,
                               fontWeight: FontWeight.w500,
                               color: selectedFilters[selectedTopic] == option
-                                  ? Colors.green
+                                  ? appColor
                                   : Colors.black,
                             ),
                           ),
@@ -390,6 +392,7 @@ class _NearestScreenState extends State<NearestScreen> {
   }
 
   Widget categorybottomsheet(BuildContext context, StateSetter setState) {
+    ScrollController _scrollController = ScrollController();
     return Container(
       //color: white,
       padding: const EdgeInsets.fromLTRB(20, 15, 20, 10),
@@ -415,42 +418,51 @@ class _NearestScreenState extends State<NearestScreen> {
                 height: 280,
                 child: Container(
                   decoration: BoxDecoration(
-                      border: Border.all(color: greayColor),
-                      borderRadius: BorderRadius.circular(10),
-                      color: white),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: categoryOptions.keys.map((topic) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedType = topic;
-                          });
-                        },
-                        child: Container(
-                          width: width,
-                          padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: selectedType == topic
-                                ? Colors.lightGreen[100]
-                                : Colors.white,
-                          ),
-                          child: Text(
-                            topic,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: Manrope,
-                              fontWeight: FontWeight.w500,
+                    border: Border.all(color: greayColor),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: RawScrollbar(
+                    controller: _scrollController,
+                    thumbColor: appColor,
+                    minThumbLength: 5,
+                    thickness: 2,
+                    trackVisibility: true,
+                    radius: const Radius.circular(5),
+                    child: ListView(
+                      controller: _scrollController,
+                      children: categoryOptions.keys.map((topic) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedType = topic;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
+                            margin: const EdgeInsets.only(
+                                left: 10, right: 10, top: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
                               color: selectedType == topic
-                                  ? appColor
-                                  : Colors.black,
+                                  ? Color.fromRGBO(181, 228, 202, 0.25)
+                                  : Colors.white,
+                            ),
+                            child: Text(
+                              topic,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontFamily: 'Manrope',
+                                fontWeight: FontWeight.w500,
+                                color: selectedType == topic
+                                    ? appColor
+                                    : Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }).toList(),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ),
@@ -484,7 +496,7 @@ class _NearestScreenState extends State<NearestScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedCategory[selectedType] == option
-                                ? Colors.lightGreen[100]
+                                ? Color.fromRGBO(181, 228, 202, 0.25)
                                 : Colors.white,
                           ),
                           child: Text(
@@ -494,7 +506,7 @@ class _NearestScreenState extends State<NearestScreen> {
                               fontFamily: Manrope,
                               fontWeight: FontWeight.w500,
                               color: selectedCategory[selectedType] == option
-                                  ? Colors.green
+                                  ? appColor
                                   : Colors.black,
                             ),
                           ),

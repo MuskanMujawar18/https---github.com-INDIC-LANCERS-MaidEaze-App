@@ -130,7 +130,7 @@ class _SelectLocationState extends State<SelectLocation> {
                             Text(
                               'Home',
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Manrope',
                               ),
@@ -166,7 +166,7 @@ class _SelectLocationState extends State<SelectLocation> {
                             Text(
                               'Office',
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Manrope',
                               ),

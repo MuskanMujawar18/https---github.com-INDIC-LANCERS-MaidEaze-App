@@ -44,7 +44,7 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                 left: 250.0,
               ),
               child: Card(
-                color: Color(0xFFD7EEE6),
+                color: const Color(0xFFD7EEE6),
                 child: SizedBox(
                   height: 25,
                   child:
@@ -56,7 +56,7 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         "  Filter  ",
                         style: TextStyle(
                             fontFamily: Manrope,
@@ -64,7 +64,7 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                             fontWeight: FontWeight.w500),
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.close,
                       size: 12,
                     )
@@ -82,29 +82,33 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                       color: const Color.fromARGB(255, 187, 225, 212),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: greayColor)),
-                  child: NotificationCard(
+                  child: const NotificationCard(
                     request: "Geeta accepts your cooking service request",
                     duration: "12h",
                     moredetailed: "Tap to see details ",
+                    moredetailedColor: appColor,
                     imageUrl: pro_image_1,
                   ),
                 ),
-                NotificationCard(
+                const NotificationCard(
                   request: "Geeta accepts your cooking service request",
                   duration: "20h",
                   moredetailed: "Tap to see details ",
+                  moredetailedColor: greayLightColor,
                   imageUrl: pro_image_1,
                 ),
-                NotificationCard(
+                const NotificationCard(
                   request: "Geeta accepts your cooking service request",
                   duration: "20h",
                   moredetailed: "Tap to see details ",
+                  moredetailedColor: greayLightColor,
                   imageUrl: pro_image_1,
                 ),
-                NotificationCard(
+                const NotificationCard(
                   request: "Geeta accepts your cooking service request",
                   duration: "20h",
                   moredetailed: "Tap to see details ",
+                  moredetailedColor: greayLightColor,
                   imageUrl: pro_image_1,
                 ),
               ]),

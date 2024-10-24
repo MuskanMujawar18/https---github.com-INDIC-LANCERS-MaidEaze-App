@@ -1,6 +1,10 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:maideazw/ui/global/appBar.dart';
+import 'package:maideazw/ui/global/botton_nav.dart';
 import 'package:maideazw/ui/global/button.dart';
+import 'package:maideazw/ui/global/common_screen.dart';
 import 'package:maideazw/ui/global/helper_card.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/styles/design.dart';
@@ -9,16 +13,16 @@ import 'package:maideazw/ui/utils/constansts.dart';
 import 'package:maideazw/ui/utils/imagesDefine.dart';
 import 'package:maideazw/ui/utils/labelKeys.dart';
 
-class TopHelper extends StatefulWidget {
-  const TopHelper({super.key});
+class FavScreen extends StatefulWidget {
+  const FavScreen({super.key});
 
   @override
-  State<TopHelper> createState() {
-    return _TopHelperState();
+  State<FavScreen> createState() {
+    return _FavScreenState();
   }
 }
 
-class _TopHelperState extends State<TopHelper> {
+class _FavScreenState extends State<FavScreen> {
   double? height, width;
   String selectedTopic = 'Distance';
   String selectedType = 'Cooking';
@@ -132,7 +136,7 @@ class _TopHelperState extends State<TopHelper> {
         "distance": "2.5 Km",
         "rating": 4.5,
         "price": "₹5000",
-        "isFavorite": false,
+        "isFavorite": true,
         "imageUrl": pro_image_1,
         "rank": "gold",
       },
@@ -150,7 +154,7 @@ class _TopHelperState extends State<TopHelper> {
         "distance": "5.0 Km",
         "rating": 4.0,
         "price": "₹3000",
-        "isFavorite": false,
+        "isFavorite": true,
         "imageUrl": pro_image_3,
         "rank": "silver",
       },
@@ -163,50 +167,16 @@ class _TopHelperState extends State<TopHelper> {
         "imageUrl": pro_image_1,
         "rank": "gold",
       },
-      {
-        "name": "Gaurav Singh",
-        "distance": "2.5 Km",
-        "rating": 3.5,
-        "price": "₹5000",
-        "isFavorite": true,
-        "imageUrl": pro_image_2,
-        "rank": "gold",
-      },
-      {
-        "name": "Priya Gupta",
-        "distance": "5.0 Km",
-        "rating": 4.0,
-        "price": "₹3000",
-        "isFavorite": false,
-        "imageUrl": pro_image_3,
-        "rank": "silver",
-      },
-      {
-        "name": "Gaurav Singh",
-        "distance": "2.5 Km",
-        "rating": 3.5,
-        "price": "₹5000",
-        "isFavorite": true,
-        "imageUrl": pro_image_2,
-        "rank": "gold",
-      },
-      {
-        "name": "Priya Gupta",
-        "distance": "5.0 Km",
-        "rating": 4.0,
-        "price": "₹3000",
-        "isFavorite": false,
-        "imageUrl": pro_image_3,
-        "rank": "silver",
-      },
     ];
 
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
+        bottomNavigationBar: BottomNav(
+            from: bottom_fav, width: width!, height: height!, context: context),
         backgroundColor: white,
         appBar: CustomAppBar(
-          title: "Top Helpers",
+          title: favoritesLbl,
           index: 0,
           toolbarHeight: 70,
           iconSize: 28,
@@ -214,62 +184,68 @@ class _TopHelperState extends State<TopHelper> {
           titleColor: Colors.black,
           iconColor: black,
           showBackButton: true,
+          rightIcon: IconButton(
+            icon: Image.asset(
+              DesignConfig.setPngPath("notification"),
+              height: 20,
+              width: 20,
+            ),
+            onPressed: () {},
+          ),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             child: Column(
               children: [
                 Row(
                   children: [
                     Card(
-                        color: isFilterApplied
-                            ? const Color.fromRGBO(181, 228, 202, 0.25)
-                            : white,
-                        child: SizedBox(
-                          height: 20,
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 3,
+                      child: SizedBox(
+                        height: 20,
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            Image.asset(
+                              DesignConfig.setPngPath("setting_icon"),
+                              height: 12,
+                              width: 12,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                if (isFilterApplied) {
+                                  // Clear filters if cross icon is pressed
+                                  setState(() {
+                                    selectedFilters.clear();
+                                    isFilterApplied = false;
+                                  });
+                                } else {
+                                  openfiltersheet(context);
+                                }
+                              },
+                              child: const Text(
+                                " Filter ",
+                                style: TextStyle(
+                                    fontFamily: Manrope,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w500),
                               ),
-                              Image.asset(
-                                DesignConfig.setPngPath("setting_icon"),
-                                height: 12,
-                                width: 12,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  if (isFilterApplied) {
-                                    // Clear filters if cross icon is pressed
-                                    setState(() {
-                                      selectedFilters.clear();
-                                      isFilterApplied = false;
-                                    });
-                                  } else {
-                                    openfiltersheet(context);
-                                  }
-                                },
-                                child: const Text(
-                                  " Filter ",
-                                  style: TextStyle(
-                                      fontFamily: Manrope,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                              isFilterApplied
-                                  ? const Icon(
-                                      Icons.close,
-                                      size: 12,
-                                    )
-                                  : const Icon(
-                                      Icons.arrow_drop_down,
-                                      size: 12,
-                                    )
-                            ],
-                          ),
-                        )),
+                            ),
+                            isFilterApplied
+                                ? const Icon(
+                                    Icons.close,
+                                    size: 12,
+                                  )
+                                : const Icon(
+                                    Icons.arrow_drop_down,
+                                    size: 12,
+                                  )
+                          ],
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       width: 20,
                     ),
@@ -298,7 +274,7 @@ class _TopHelperState extends State<TopHelper> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     Card(
                       child: SizedBox(
                         height: 20,
@@ -330,23 +306,30 @@ class _TopHelperState extends State<TopHelper> {
                 const SizedBox(
                   height: 10,
                 ),
-                ListView.builder(
-                  itemCount: topHelpers.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    var helper = topHelpers[index];
-                    return TopHelperCard(
-                      name: helper['name'],
-                      distance: helper['distance'],
-                      rating: helper['rating'],
-                      price: helper['price'],
-                      isFavorite: helper['isFavorite'],
-                      imageUrl: helper['imageUrl'],
-                      rank: helper['rank'],
-                    );
-                  },
-                ),
+                topHelpers.isEmpty
+                    ? CommonScreen(
+                        imagePath: "nearest_not_found",
+                        title: "No favorites",
+                        titlefontSize: 12,
+                        titleFontWeight: FontWeight.w500,
+                        titlefontColor: greayLightColor)
+                    : ListView.builder(
+                        itemCount: topHelpers.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          var helper = topHelpers[index];
+                          return TopHelperCard(
+                            name: helper['name'],
+                            distance: helper['distance'],
+                            rating: helper['rating'],
+                            price: helper['price'],
+                            isFavorite: helper['isFavorite'],
+                            imageUrl: helper['imageUrl'],
+                            rank: helper['rank'],
+                          );
+                        },
+                      ),
               ],
             ),
           ),
@@ -394,8 +377,7 @@ class _TopHelperState extends State<TopHelper> {
                         child: Container(
                           width: width,
                           padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
-                          margin: const EdgeInsets.only(
-                              left: 10, right: 10, top: 5),
+                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedTopic == topic
@@ -443,8 +425,7 @@ class _TopHelperState extends State<TopHelper> {
                         },
                         child: Container(
                           width: width,
-                          margin: const EdgeInsets.only(
-                              left: 10, right: 10, top: 5),
+                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 10),
                           decoration: BoxDecoration(
@@ -598,8 +579,7 @@ class _TopHelperState extends State<TopHelper> {
                         },
                         child: Container(
                           width: width,
-                          margin: const EdgeInsets.only(
-                              left: 10, right: 10, top: 5),
+                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 10),
                           decoration: BoxDecoration(

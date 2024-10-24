@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maideazw/ui/utils/constansts.dart';
 
 class ButtonContainer extends StatefulWidget {
   final double? width,
@@ -75,6 +76,7 @@ class _ButtonContainerState extends State<ButtonContainer> {
                       color: widget.textColor!,
                       fontSize: widget.fontSize ?? 16,
                       letterSpacing: 0.2,
+                      fontFamily: Manrope,
                       fontWeight: FontWeight.w700)),
         ),
       ),

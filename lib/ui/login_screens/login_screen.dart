@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/login_otp_screens/login_otp.dart';
+import 'package:maideazw/ui/login_screens/login_otp.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/utils/constansts.dart';
 import 'package:maideazw/ui/utils/labelKeys.dart';
@@ -17,6 +17,18 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   double? height, width;
   final _phoneController = TextEditingController();
+
+  Text _buildText(String text, FontWeight weight, Color color) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 12,
+        fontWeight: weight,
+        fontFamily: 'Manrope',
+        color: color,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 10.0, right: 10.0, top: 320, bottom: 20),
-                  child: Positioned(
+                  child: SizedBox(
                     width: width,
                     height: 242,
                     child: Container(
@@ -143,73 +155,38 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (context) => const LoginOtpScreen()));
                 }),
             const Spacer(),
-            const Padding(
-                padding: EdgeInsets.only(left: 40.0, right: 40),
-                child: Column(
-                  children: [
-                    Row(
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildText("By proceeding, you agree with MaidEaze’s",
+                          FontWeight.w400, greayLightColor),
+                      SizedBox(width: 3),
+                      _buildText("terms and", FontWeight.w600, appColor),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 100.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "By proceeding, you agree with MaidEaze’s",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: Manrope,
-                              color: greayLightColor),
-                        ),
-                        SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          "terms and",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: Manrope,
-                              color: appColor),
-                        ),
+                        _buildText("conditions", FontWeight.w600, appColor),
+                        SizedBox(width: 3),
+                        _buildText("and", FontWeight.w400, greayLightColor),
+                        SizedBox(width: 3),
+                        _buildText("privacy policy", FontWeight.w600, appColor),
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 60.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "conditions",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: Manrope,
-                                color: appColor),
-                          ),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Text(
-                            "and",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: Manrope,
-                                color: greayLightColor),
-                          ),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Text(
-                            "privacy policy",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: Manrope,
-                                color: appColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 30)
-                  ],
-                ))
+                  ),
+                  SizedBox(height: 30),
+                ],
+              ),
+            )
           ]),
         ),
       ),

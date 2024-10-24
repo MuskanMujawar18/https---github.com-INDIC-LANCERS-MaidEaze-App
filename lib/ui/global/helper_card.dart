@@ -69,9 +69,10 @@ class TopHelperCard extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Row(
                 children: [
-                  Icon(
-                    Icons.location_on_rounded,
-                    size: 10,
+                  Image.asset(
+                    DesignConfig.setPngPath("location_outlined"),
+                    height: 10,
+                    width: 10,
                     color: greayLightColor,
                   ),
                   Text(
@@ -79,7 +80,7 @@ class TopHelperCard extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: const TextStyle(
                         fontFamily: Manrope,
-                        fontSize: 8,
+                        fontSize: 10,
                         fontWeight: FontWeight.w400,
                         color: greayLightColor),
                   ),
@@ -106,8 +107,10 @@ class TopHelperCard extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(2),
-              decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 247, 231, 206)),
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(255, 153, 0, 0.15),
+                borderRadius: BorderRadius.circular(3),
+              ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
