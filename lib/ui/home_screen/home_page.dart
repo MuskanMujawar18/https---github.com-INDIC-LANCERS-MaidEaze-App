@@ -7,6 +7,8 @@ import 'package:maideazw/ui/search_screen/searchScreen.dart';
 import 'package:maideazw/ui/select_location/select_location.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/styles/design.dart';
+import 'package:maideazw/ui/top_helpers/top_helper.dart';
+import 'package:maideazw/ui/top_helpers/nearest_screen.dart';
 import 'package:maideazw/ui/utils/constansts.dart';
 import 'package:maideazw/ui/utils/imagesDefine.dart';
 
@@ -321,9 +323,9 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-                const Row(
+                Row(
                   children: [
-                    Text(
+                    const Text(
                       "Top Helpers",
                       style: TextStyle(
                         fontSize: 16.0,
@@ -331,14 +333,22 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Spacer(),
-                    Text(
-                      "View All",
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        fontFamily: Manrope,
-                        color: appColor,
-                        fontWeight: FontWeight.w600,
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TopHelper()));
+                      },
+                      child: const Text(
+                        "View All",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          fontFamily: Manrope,
+                          color: appColor,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],

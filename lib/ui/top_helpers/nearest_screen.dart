@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:maideazw/ui/global/appBar.dart';
 import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/global/helper_card.dart';
 import 'package:maideazw/ui/styles/color.dart';
 import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/top_helpers/nearest_screen.dart';
 import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/imagesDefine.dart';
 import 'package:maideazw/ui/utils/labelKeys.dart';
 
-class TopHelper extends StatefulWidget {
-  const TopHelper({super.key});
+class NearestScreen extends StatefulWidget {
+  const NearestScreen({super.key});
 
   @override
-  State<TopHelper> createState() {
-    return _TopHelperState();
+  State<NearestScreen> createState() {
+    return _NearestScreenState();
   }
 }
 
-class _TopHelperState extends State<TopHelper> {
+class _NearestScreenState extends State<NearestScreen> {
   double? height, width;
   String selectedTopic = 'Distance';
   String selectedType = 'Cooking';
   Map<String, String> selectedFilters = {};
   Map<String, String> selectedCategory = {};
-  bool isFilterApplied = false;
-
   final Map<String, List<String>> filterOptions = {
     'Distance': [
       '0 Km - 5 Km',
@@ -124,81 +119,6 @@ class _TopHelperState extends State<TopHelper> {
       );
     }
 
-    final List<Map<String, dynamic>> topHelpers = [
-      {
-        "name": "Akshita Singh",
-        "distance": "2.5 Km",
-        "rating": 4.5,
-        "price": "₹5000",
-        "isFavorite": false,
-        "imageUrl": pro_image_1,
-        "rank": "gold",
-      },
-      {
-        "name": "Gaurav Singh",
-        "distance": "2.5 Km",
-        "rating": 3.5,
-        "price": "₹5000",
-        "isFavorite": true,
-        "imageUrl": pro_image_2,
-        "rank": "gold",
-      },
-      {
-        "name": "Priya Gupta",
-        "distance": "5.0 Km",
-        "rating": 4.0,
-        "price": "₹3000",
-        "isFavorite": false,
-        "imageUrl": pro_image_3,
-        "rank": "silver",
-      },
-      {
-        "name": "Pooja Roy",
-        "distance": "2.5 Km",
-        "rating": 3.5,
-        "price": "₹2000",
-        "isFavorite": true,
-        "imageUrl": pro_image_1,
-        "rank": "gold",
-      },
-      {
-        "name": "Gaurav Singh",
-        "distance": "2.5 Km",
-        "rating": 3.5,
-        "price": "₹5000",
-        "isFavorite": true,
-        "imageUrl": pro_image_2,
-        "rank": "gold",
-      },
-      {
-        "name": "Priya Gupta",
-        "distance": "5.0 Km",
-        "rating": 4.0,
-        "price": "₹3000",
-        "isFavorite": false,
-        "imageUrl": pro_image_3,
-        "rank": "silver",
-      },
-      {
-        "name": "Gaurav Singh",
-        "distance": "2.5 Km",
-        "rating": 3.5,
-        "price": "₹5000",
-        "isFavorite": true,
-        "imageUrl": pro_image_2,
-        "rank": "gold",
-      },
-      {
-        "name": "Priya Gupta",
-        "distance": "5.0 Km",
-        "rating": 4.0,
-        "price": "₹3000",
-        "isFavorite": false,
-        "imageUrl": pro_image_3,
-        "rank": "silver",
-      },
-    ];
-
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -217,8 +137,12 @@ class _TopHelperState extends State<TopHelper> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Card(
                       child: SizedBox(
@@ -234,17 +158,7 @@ class _TopHelperState extends State<TopHelper> {
                               width: 12,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                if (isFilterApplied) {
-                                  // Clear filters if cross icon is pressed
-                                  setState(() {
-                                    selectedFilters.clear();
-                                    isFilterApplied = false;
-                                  });
-                                } else {
-                                  openfiltersheet(context);
-                                }
-                              },
+                              onTap: () => openfiltersheet(context),
                               child: const Text(
                                 " Filter ",
                                 style: TextStyle(
@@ -253,15 +167,10 @@ class _TopHelperState extends State<TopHelper> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                            isFilterApplied
-                                ? const Icon(
-                                    Icons.close,
-                                    size: 12,
-                                  )
-                                : const Icon(
-                                    Icons.arrow_drop_down,
-                                    size: 12,
-                                  )
+                            const Icon(
+                              Icons.arrow_drop_down,
+                              size: 12,
+                            )
                           ],
                         ),
                       ),
@@ -270,19 +179,14 @@ class _TopHelperState extends State<TopHelper> {
                       width: 20,
                     ),
                     Card(
-                      child: SizedBox(
+                      child: Container(
+                        color: Colors.lightGreen[100],
                         height: 20,
                         child: Padding(
                           padding: const EdgeInsets.only(
                               top: 5.0, right: 5, left: 5, bottom: 5),
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const NearestScreen()));
-                            },
+                            onTap: () {},
                             child: const Text(
                               " Nearest ",
                               style: TextStyle(
@@ -324,24 +228,21 @@ class _TopHelperState extends State<TopHelper> {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 120,
                 ),
-                ListView.builder(
-                  itemCount: topHelpers.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    var helper = topHelpers[index];
-                    return TopHelperCard(
-                      name: helper['name'],
-                      distance: helper['distance'],
-                      rating: helper['rating'],
-                      price: helper['price'],
-                      isFavorite: helper['isFavorite'],
-                      imageUrl: helper['imageUrl'],
-                      rank: helper['rank'],
-                    );
-                  },
+                Center(
+                    child: Image.asset(
+                  DesignConfig.setPngPath("nearest_not_found"),
+                  height: 250,
+                  width: 250,
+                )),
+                Text(
+                  "No top helpers nearest you.",
+                  style: TextStyle(
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      color: greayLightColor,
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -481,12 +382,7 @@ class _TopHelperState extends State<TopHelper> {
             start: 0,
             height: height,
             width: width,
-            onPressed: () async {
-              setState(() {
-                isFilterApplied = true;
-              });
-              Navigator.pop(context);
-            },
+            onPressed: () async {},
           )
         ],
       ),
@@ -625,9 +521,7 @@ class _TopHelperState extends State<TopHelper> {
             start: 0,
             height: height,
             width: width,
-            onPressed: () async {
-              Navigator.pop(context);
-            },
+            onPressed: () async {},
           )
         ],
       ),

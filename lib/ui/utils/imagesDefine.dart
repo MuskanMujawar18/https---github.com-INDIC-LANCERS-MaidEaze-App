@@ -35,6 +35,8 @@ const String building_icon = "building_icon";
 const String setting_icon = "setting_icon";
 const String send_icon = "send_icon";
 
+const String nearest_not_found = "nearest_not_found";
+
 const String chevron_arrow = "chevron_arrow";
 const String earth = "earth";
 const String location = "location";

@@ -10,6 +10,7 @@ import 'package:maideazw/ui/search_screen/searchScreen.dart';
 import 'package:maideazw/ui/select_location/select_location.dart';
 import 'package:maideazw/ui/splash_screen.dart';
 import 'package:maideazw/ui/top_helpers/top_helper.dart';
+import 'package:maideazw/ui/top_helpers/nearest_screen.dart';
 
 class Routes {
   static const splash = '/';
@@ -23,6 +24,7 @@ class Routes {
   static const tophelper = '/tophelper';
   static const notification = '/notification';
   static const notificationfilterscreen = '/notificationfilterscreen';
+  static const nearestscreen = '/nearestscreen';
   static String currentRoute = splash;
 
   static Route<dynamic> onGenerateRouted(RouteSettings routeSettings) {
@@ -53,6 +55,8 @@ class Routes {
             builder: (context) => NotificationFilterScreen());
       case tophelper:
         return CupertinoPageRoute(builder: (context) => TopHelper());
+      case nearestscreen:
+        return CupertinoPageRoute(builder: (context) => NearestScreen());
       default:
         return CupertinoPageRoute(builder: (context) => const SizedBox());
     }

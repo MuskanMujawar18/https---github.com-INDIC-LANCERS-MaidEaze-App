@@ -164,7 +164,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFFD7EEE6),
+                      color: Color(0xFFD7EEE6), //green color
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Padding(
