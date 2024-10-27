@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/global/calendar.dart';
-import 'package:maideazw/ui/global/common_screen.dart';
-import 'package:maideazw/ui/home_screen/home_page.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/global/calendar.dart';
+import 'package:maideaze/ui/global/common_screen.dart';
+import 'package:maideaze/ui/home_screen/home_page.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 import 'package:intl/intl.dart';
 
 class HelperDetailed extends StatefulWidget {
@@ -423,7 +424,7 @@ class _HelperDetailedState extends State<HelperDetailed> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12.0),
                             child: Image.asset(
-                              DesignConfig.setPngPath("calendar"),
+                              DesignConfig.setPngPath(calendar),
                               height: 12,
                               width: 12,
                             ),
@@ -459,7 +460,7 @@ class _HelperDetailedState extends State<HelperDetailed> {
                         suffixIcon: Padding(
                           padding: const EdgeInsets.only(top: 70.0, left: 25),
                           child: Image.asset(
-                            DesignConfig.setPngPath("drag_icon"),
+                            DesignConfig.setPngPath(drag_icon),
                             height: 12,
                             width: 12,
                           ),

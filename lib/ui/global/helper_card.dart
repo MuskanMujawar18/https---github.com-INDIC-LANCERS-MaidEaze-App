@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
 
 class TopHelperCard extends StatelessWidget {
   final String name;
@@ -26,7 +27,7 @@ class TopHelperCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      // margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -49,13 +50,13 @@ class TopHelperCard extends StatelessWidget {
             const SizedBox(width: 4),
             if (rank == 'gold') ...[
               Image.asset(
-                DesignConfig.setPngPath("crown_golden"),
+                DesignConfig.setPngPath(crown_golden),
                 height: 12,
                 width: 12,
               )
             ] else if (rank == 'silver') ...[
               Image.asset(
-                DesignConfig.setPngPath("crown_silver"),
+                DesignConfig.setPngPath(crown_silver),
                 height: 12,
                 width: 12,
               )
@@ -70,7 +71,7 @@ class TopHelperCard extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    DesignConfig.setPngPath("location_outlined"),
+                    DesignConfig.setPngPath(location_outlined),
                     height: 10,
                     width: 10,
                     color: greayLightColor,
@@ -115,7 +116,7 @@ class TopHelperCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Image.asset(
-                    DesignConfig.setPngPath("star"),
+                    DesignConfig.setPngPath(star),
                     height: 12,
                     width: 12,
                   ),

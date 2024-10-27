@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/botton_nav.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/profile_screens/document_screen.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/imagesDefine.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/botton_nav.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/profile_screens/aboutus_screen.dart';
+import 'package:maideaze/ui/profile_screens/anti_policy_screen.dart';
+import 'package:maideaze/ui/profile_screens/attendance/attendance_screen.dart';
+import 'package:maideaze/ui/profile_screens/document_screen/document_screen.dart';
+import 'package:maideaze/ui/profile_screens/manage_address/manage_address.dart';
+import 'package:maideaze/ui/profile_screens/privacy_policy_screen.dart';
+import 'package:maideaze/ui/profile_screens/service_guidlines_screen.dart';
+import 'package:maideaze/ui/profile_screens/support/support_screen.dart';
+import 'package:maideaze/ui/profile_screens/update_profile/update_profile_screen.dart';
+import 'package:maideaze/ui/profile_screens/verify/verify_screen.dart';
+import 'package:maideaze/ui/profile_screens/wallet/wallet_screen.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -42,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         showBackButton: true,
         rightIcon: IconButton(
           icon: const Icon(
-            Icons.settings, // Notification icon
+            Icons.settings,
             color: Colors.white,
             size: 20,
           ),
@@ -59,46 +69,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: const Color.fromRGBO(181, 228, 202, 0.25)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    DesignConfig.setPngPath("pro_image_ellipse"),
-                    height: 64,
-                    width: 64,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Akshita Singh",
-                        style: TextStyle(
-                            fontFamily: Manrope,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Text(
-                        "akshitasingh@gmail.com",
-                        style: TextStyle(
-                            fontFamily: Manrope,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.keyboard_arrow_right_rounded,
-                    size: 16,
-                  )
-                ],
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UpdateProfile()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 64,
+                      width: 64,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: greayColor),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "User0123",
+                          style: TextStyle(
+                              fontFamily: Manrope,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Text(
+                          "Update your profile",
+                          style: TextStyle(
+                              fontFamily: Manrope,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      size: 16,
+                    )
+                  ],
+                ),
               ),
             ),
             const SizedBox(
@@ -115,25 +134,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: greayColor,
                       ),
                       borderRadius: BorderRadius.circular(8)),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        DesignConfig.setPngPath("wallet"),
-                        height: 24,
-                        width: 24,
-                        color: appColor,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      const Text(
-                        "My Wallet",
-                        style: TextStyle(
-                            fontFamily: Manrope,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const WalletScreen()));
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          DesignConfig.setPngPath(wallet),
+                          height: 24,
+                          width: 24,
+                          color: appColor,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          "My Wallet",
+                          style: TextStyle(
+                              fontFamily: Manrope,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -147,25 +174,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: greayColor,
                       ),
                       borderRadius: BorderRadius.circular(8)),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        DesignConfig.setPngPath("calendar"),
-                        height: 24,
-                        width: 24,
-                        color: appColor,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      const Text(
-                        "Attendance",
-                        style: TextStyle(
-                            fontFamily: Manrope,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AttendanceScreen()));
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          DesignConfig.setPngPath(calendar),
+                          height: 24,
+                          width: 24,
+                          color: appColor,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          "Attendance",
+                          style: TextStyle(
+                              fontFamily: Manrope,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -173,7 +208,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(
               height: 15,
             ),
-            profileContent("document_upload", "My Documents", () {
+            profileContent(document_upload, "My Documents", () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -182,31 +217,66 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(
               height: 10,
             ),
-            profileContent("location_outlined", "Manage Address", () {}),
+            profileContent(location_outlined, "Manage Address", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ManageAddress()));
+            }),
             const SizedBox(
               height: 10,
             ),
-            profileContent("verify", "Verify My Maid", () {}),
+            profileContent(verify, "Verify My Maid", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const VerifyScreen()));
+            }),
             const SizedBox(
               height: 10,
             ),
-            profileContent("support", "Support", () {}),
+            profileContent(support, "Support", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SupportScreen()));
+            }),
             const SizedBox(
               height: 10,
             ),
-            profileContent("task", "Service Guidlines", () {}),
+            profileContent(task, "Service Guidlines", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ServiceGuidlinesScreen()));
+            }),
             const SizedBox(
               height: 10,
             ),
-            profileContent("security", "Anti-Discriminatory Policy", () {}),
+            profileContent(security, "Anti-Discriminatory Policy", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AntiPolicyScreen()));
+            }),
             const SizedBox(
               height: 10,
             ),
-            profileContent("lock", "Privacy Policy", () {}),
+            profileContent(lock, "Privacy Policy", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PrivacyPolicyScreen()));
+            }),
             const SizedBox(
               height: 10,
             ),
-            profileContent("info_circle", "About Us", () {}),
+            profileContent(info_circle, "About Us", () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AboutusScreen()));
+            }),
             const SizedBox(
               height: 10,
             ),
@@ -218,7 +288,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Row(
                 children: [
                   Image.asset(
-                    DesignConfig.setPngPath("logout"),
+                    DesignConfig.setPngPath(logout),
                     width: 20,
                     height: 20,
                     fit: BoxFit.contain,
@@ -249,7 +319,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    DesignConfig.setPngPath("refer_friend"),
+                    DesignConfig.setPngPath(refer_friend),
                     height: 211,
                     width: 252,
                   ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/global/helper_card.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/top_helpers/nearest_screen.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/imagesDefine.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/global/helper_card.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/top_helpers/nearest_screen.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class TopHelper extends StatefulWidget {
   const TopHelper({super.key});
@@ -234,7 +234,7 @@ class _TopHelperState extends State<TopHelper> {
                                 width: 3,
                               ),
                               Image.asset(
-                                DesignConfig.setPngPath("setting_icon"),
+                                DesignConfig.setPngPath(setting_icon),
                                 height: 12,
                                 width: 12,
                               ),
@@ -336,14 +336,17 @@ class _TopHelperState extends State<TopHelper> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     var helper = topHelpers[index];
-                    return TopHelperCard(
-                      name: helper['name'],
-                      distance: helper['distance'],
-                      rating: helper['rating'],
-                      price: helper['price'],
-                      isFavorite: helper['isFavorite'],
-                      imageUrl: helper['imageUrl'],
-                      rank: helper['rank'],
+                    return Container(
+                      margin: EdgeInsets.only(top: index == 0 ? 0 : 24),
+                      child: TopHelperCard(
+                        name: helper['name'],
+                        distance: helper['distance'],
+                        rating: helper['rating'],
+                        price: helper['price'],
+                        isFavorite: helper['isFavorite'],
+                        imageUrl: helper['imageUrl'],
+                        rank: helper['rank'],
+                      ),
                     );
                   },
                 ),

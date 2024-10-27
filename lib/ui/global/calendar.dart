@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:maideazw/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/color.dart';
 
 class CalendarPopup extends StatefulWidget {
   final Function(DateTime) onDateSelected;

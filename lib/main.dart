@@ -1,8 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/app/routes.dart';
-import 'package:maideazw/ui/styles/color.dart';
+import 'package:maideaze/ui/app/routes.dart';
+import 'package:maideaze/ui/styles/color.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 

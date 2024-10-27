@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
 
 class CustomSearchField extends StatelessWidget {
   final String hintText;

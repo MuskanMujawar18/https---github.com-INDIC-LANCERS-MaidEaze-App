@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
 
 class CommonScreen extends StatelessWidget {
   final String imagePath;
@@ -39,6 +39,7 @@ class CommonScreen extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: white,
       body: Padding(
         padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 15),
         child: Align(
@@ -49,7 +50,7 @@ class CommonScreen extends StatelessWidget {
             children: [
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 20.0, right: 20.0, top: 240),
+                    const EdgeInsets.only(left: 20.0, right: 20.0, top: 200),
                 child: Image.asset(
                   DesignConfig.setPngPath(imagePath),
                   height: 200,

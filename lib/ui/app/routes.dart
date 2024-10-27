@@ -1,27 +1,47 @@
 import 'package:flutter/cupertino.dart';
-import 'package:maideazw/ui/favorites_screen/fav_screen.dart';
-import 'package:maideazw/ui/helper%20details/helper_description.dart';
-import 'package:maideazw/ui/helper%20details/helper_detailed.dart';
-import 'package:maideazw/ui/home_screen/home_page.dart';
-import 'package:maideazw/ui/login_screens/login_otp.dart';
-import 'package:maideazw/ui/login_screens/login_screen.dart';
-import 'package:maideazw/ui/mpin_screen/mpin_screen.dart';
-import 'package:maideazw/ui/my_booking/current_booking_ongoing.dart';
-import 'package:maideazw/ui/my_booking/my_booking.dart';
-import 'package:maideazw/ui/my_booking/current_booking_cancelled.dart';
-import 'package:maideazw/ui/my_booking/current_booking_completed.dart';
-import 'package:maideazw/ui/my_booking/replace_service_provider.dart';
-import 'package:maideazw/ui/notification/notification.dart';
-import 'package:maideazw/ui/notification/notification_filter_screen.dart';
-import 'package:maideazw/ui/onboardingScreens/onboarding.dart';
-import 'package:maideazw/ui/profile_screens/document_screen.dart';
-import 'package:maideazw/ui/profile_screens/profile_screen.dart';
-import 'package:maideazw/ui/review_screen/review_screen.dart';
-import 'package:maideazw/ui/search_screen/searchScreen.dart';
-import 'package:maideazw/ui/select_location/select_location.dart';
-import 'package:maideazw/ui/splash_screen.dart';
-import 'package:maideazw/ui/top_helpers/top_helper.dart';
-import 'package:maideazw/ui/top_helpers/nearest_screen.dart';
+import 'package:maideaze/ui/favorites_screen/fav_screen.dart';
+import 'package:maideaze/ui/helper%20details/helper_description.dart';
+import 'package:maideaze/ui/helper%20details/helper_detailed.dart';
+import 'package:maideaze/ui/home_screen/home_page.dart';
+import 'package:maideaze/ui/login_screens/login_otp.dart';
+import 'package:maideaze/ui/login_screens/login_screen.dart';
+import 'package:maideaze/ui/mpin_screen/mpin_screen.dart';
+import 'package:maideaze/ui/my_booking/add_coupon.dart';
+import 'package:maideaze/ui/my_booking/coupon_sent_request.dart';
+import 'package:maideaze/ui/my_booking/current_booking_ongoing.dart';
+import 'package:maideaze/ui/my_booking/my_booking.dart';
+import 'package:maideaze/ui/my_booking/current_booking_cancelled.dart';
+import 'package:maideaze/ui/my_booking/current_booking_completed.dart';
+import 'package:maideaze/ui/my_booking/replace_service_provider.dart';
+import 'package:maideaze/ui/my_booking/sent_request_booking.dart';
+import 'package:maideaze/ui/notification/notification.dart';
+import 'package:maideaze/ui/notification/notification_filter_screen.dart';
+import 'package:maideaze/ui/onboardingScreens/onboarding.dart';
+import 'package:maideaze/ui/profile_screens/aboutus_screen.dart';
+import 'package:maideaze/ui/profile_screens/anti_policy_screen.dart';
+import 'package:maideaze/ui/profile_screens/attendance/attendance_screen.dart';
+import 'package:maideaze/ui/profile_screens/attendance/leave_details.dart';
+import 'package:maideaze/ui/profile_screens/document_screen/document_screen.dart';
+import 'package:maideaze/ui/profile_screens/manage_address/add_new_address.dart';
+import 'package:maideaze/ui/profile_screens/manage_address/manage_address.dart';
+import 'package:maideaze/ui/profile_screens/privacy_policy_screen.dart';
+import 'package:maideaze/ui/profile_screens/profile_screen.dart';
+import 'package:maideaze/ui/profile_screens/service_guidlines_screen.dart';
+import 'package:maideaze/ui/profile_screens/support/faq_detailes.dart';
+import 'package:maideaze/ui/profile_screens/support/faq_screen.dart';
+import 'package:maideaze/ui/profile_screens/support/help_center.dart';
+import 'package:maideaze/ui/profile_screens/support/query_screen.dart';
+import 'package:maideaze/ui/profile_screens/support/support_screen.dart';
+import 'package:maideaze/ui/profile_screens/update_profile/update_profile_screen.dart';
+import 'package:maideaze/ui/profile_screens/verify/police_varification_screen.dart';
+import 'package:maideaze/ui/profile_screens/verify/verify_screen.dart';
+import 'package:maideaze/ui/profile_screens/wallet/wallet_screen.dart';
+import 'package:maideaze/ui/review_screen/review_screen.dart';
+import 'package:maideaze/ui/search_screen/searchScreen.dart';
+import 'package:maideaze/ui/select_location/select_location.dart';
+import 'package:maideaze/ui/splash_screen.dart';
+import 'package:maideaze/ui/top_helpers/top_helper.dart';
+import 'package:maideaze/ui/top_helpers/nearest_screen.dart';
 
 class Routes {
   static const splash = '/';
@@ -47,6 +67,26 @@ class Routes {
   static const documentscreen = '/documentscreen';
   static const replaceprovider = '/replaceprovider';
   static const reviewscreen = '/reviewscreen';
+  static const addcoupon = '/addcoupon';
+  static const couponsentrequest = '/couponsentrequest';
+  static const sentrequestbooking = '/sentrequestbooking';
+  static const updateprofile = '/updateprofile';
+  static const manageaddress = '/manageaddress';
+  static const addnewaddress = '/addnewaddress';
+  static const mywallet = '/mywallet';
+  static const attendancescreen = '/attendancescreen';
+  static const leavedetailes = '/leavedetailes';
+  static const verifyscreen = '/verifyscreen';
+  static const policeverification = '/policeverification';
+  static const supportscreen = '/supportscreen';
+  static const helpcenter = '/helpcenter';
+  static const queryscreen = '/queryscreen';
+  static const faqsscreen = '/faqscreen';
+  static const faqdetailes = '/faqdetailes';
+  static const serviceguidlines = '/serviceguidlines';
+  static const antipolicy = '/antipolicy';
+  static const privacypolicy = '/privacypolicy';
+  static const aboutus = '/aboutus';
   static String currentRoute = splash;
 
   static Route<dynamic> onGenerateRouted(RouteSettings routeSettings) {
@@ -107,6 +147,50 @@ class Routes {
             builder: (context) => const ReplaceServiceProvider());
       case reviewscreen:
         return CupertinoPageRoute(builder: (context) => ReviewScreen());
+      case addcoupon:
+        return CupertinoPageRoute(builder: (context) => const AddCoupon());
+      case couponsentrequest:
+        return CupertinoPageRoute(
+            builder: (context) => const couponSentRequestBooking());
+      case sentrequestbooking:
+        return CupertinoPageRoute(
+            builder: (context) => const SentRequestBooking());
+      case updateprofile:
+        return CupertinoPageRoute(builder: (context) => const UpdateProfile());
+      case manageaddress:
+        return CupertinoPageRoute(builder: (context) => const ManageAddress());
+      case addnewaddress:
+        return CupertinoPageRoute(builder: (context) => const AddNewAddress());
+      case mywallet:
+        return CupertinoPageRoute(builder: (context) => const WalletScreen());
+      case attendancescreen:
+        return CupertinoPageRoute(builder: (context) => AttendanceScreen());
+      case leavedetailes:
+        return CupertinoPageRoute(builder: (context) => LeaveDetailed());
+      case verifyscreen:
+        return CupertinoPageRoute(builder: (context) => VerifyScreen());
+      case policeverification:
+        return CupertinoPageRoute(builder: (context) => PoliceVeriScreen());
+      case supportscreen:
+        return CupertinoPageRoute(builder: (context) => SupportScreen());
+      case helpcenter:
+        return CupertinoPageRoute(builder: (context) => HelpCenter());
+      case queryscreen:
+        return CupertinoPageRoute(builder: (context) => QueryScreen());
+      case faqsscreen:
+        return CupertinoPageRoute(builder: (context) => FaqScreen());
+      case faqdetailes:
+        return CupertinoPageRoute(builder: (context) => FaqDetailes());
+      case serviceguidlines:
+        return CupertinoPageRoute(
+            builder: (context) => ServiceGuidlinesScreen());
+      case antipolicy:
+        return CupertinoPageRoute(builder: (context) => AntiPolicyScreen());
+      case privacypolicy:
+        return CupertinoPageRoute(builder: (context) => PrivacyPolicyScreen());
+      case aboutus:
+        return CupertinoPageRoute(builder: (context) => AboutusScreen());
+
       default:
         return CupertinoPageRoute(builder: (context) => const SizedBox());
     }

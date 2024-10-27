@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/my_booking/add_coupon.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class SentRequestBooking extends StatefulWidget {
   const SentRequestBooking({super.key});
@@ -51,7 +53,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                       const SizedBox(
                         height: 25,
                       ),
-                      Text(
+                      const Text(
                         "Details",
                         style: TextStyle(
                             fontFamily: Manrope,
@@ -86,7 +88,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                       Row(
                         children: [
                           Image.asset(
-                            DesignConfig.setPngPath("calendar"),
+                            DesignConfig.setPngPath(calendar),
                             height: 18,
                             width: 18,
                           ),
@@ -108,7 +110,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                       Row(
                         children: [
                           Image.asset(
-                            DesignConfig.setPngPath("location_colored"),
+                            DesignConfig.setPngPath(location_colored),
                             height: 18,
                             color: appColor,
                             width: 18,
@@ -169,14 +171,14 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         "Tip your service provider",
                         style: TextStyle(
                             fontFamily: Manrope,
                             fontSize: 10,
                             fontWeight: FontWeight.w700),
                       ),
-                      Text(
+                      const Text(
                         "Your kindness means a lot! 100% of your tip will go directly to them",
                         style: TextStyle(
                             fontFamily: Manrope,
@@ -190,13 +192,14 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 10),
                             decoration: BoxDecoration(
-                                color: Color.fromRGBO(181, 228, 202, 0.25),
+                                color:
+                                    const Color.fromRGBO(181, 228, 202, 0.25),
                                 border: Border.all(color: appColor, width: 0.5),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "₹20",
                                 style: TextStyle(
@@ -210,12 +213,12 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                             width: 10,
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 10),
                             decoration: BoxDecoration(
                                 border: Border.all(color: appColor, width: 0.5),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "₹30",
                                 style: TextStyle(
@@ -229,12 +232,12 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                             width: 10,
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 10),
                             decoration: BoxDecoration(
                                 border: Border.all(color: appColor, width: 0.5),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "₹50",
                                 style: TextStyle(
@@ -248,12 +251,12 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                             width: 10,
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 10),
                             decoration: BoxDecoration(
                                 border: Border.all(color: appColor, width: 0.5),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "₹100",
                                 style: TextStyle(
@@ -269,36 +272,44 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                         height: 25,
                       ),
                       Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: greayColor)),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Image.asset(
-                              DesignConfig.setPngPath("ticket"),
-                              height: 20,
-                              width: 20,
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "Apply Coupon",
-                              style: TextStyle(
-                                  fontFamily: Manrope,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.keyboard_arrow_right_rounded,
-                              size: 16,
-                            )
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AddCoupon()));
+                          },
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Image.asset(
+                                DesignConfig.setPngPath(ticket),
+                                height: 20,
+                                width: 20,
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              const Text(
+                                "Apply Coupon",
+                                style: TextStyle(
+                                    fontFamily: Manrope,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              const Spacer(),
+                              const Icon(
+                                Icons.keyboard_arrow_right_rounded,
+                                size: 16,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -392,13 +403,13 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                 const SizedBox(width: 4),
                 if (rank == 'gold') ...[
                   Image.asset(
-                    DesignConfig.setPngPath("crown_golden"),
+                    DesignConfig.setPngPath(crown_golden),
                     height: 12,
                     width: 12,
                   )
                 ] else if (rank == 'silver') ...[
                   Image.asset(
-                    DesignConfig.setPngPath("crown_silver"),
+                    DesignConfig.setPngPath(crown_silver),
                     height: 12,
                     width: 12,
                   )
@@ -413,7 +424,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                   child: Row(
                     children: [
                       Image.asset(
-                        DesignConfig.setPngPath("location_outlined"),
+                        DesignConfig.setPngPath(location_outlined),
                         height: 10,
                         width: 10,
                         color: greayLightColor,
@@ -458,7 +469,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        DesignConfig.setPngPath("star"),
+                        DesignConfig.setPngPath(star),
                         height: 12,
                         width: 12,
                       ),
@@ -483,12 +494,12 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
             ),
             onTap: () {},
           ),
-          Divider(
+          const Divider(
             color: greayLightColor,
             indent: 10,
             endIndent: 10,
           ),
-          Text(
+          const Text(
             "Cleaning + Laundry Service",
             style: TextStyle(
                 fontFamily: Manrope, fontSize: 12, fontWeight: FontWeight.w600),

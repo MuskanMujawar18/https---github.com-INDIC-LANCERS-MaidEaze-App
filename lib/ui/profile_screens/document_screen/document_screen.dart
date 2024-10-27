@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class DocumentScreen extends StatefulWidget {
   const DocumentScreen({super.key});
@@ -61,7 +62,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
                           child: Row(
                             children: [
                               Image.asset(
-                                DesignConfig.setPngPath("document_upload"),
+                                DesignConfig.setPngPath(document_upload),
                                 height: 12,
                                 width: 12,
                                 color: black,
@@ -127,7 +128,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
                           child: Row(
                             children: [
                               Image.asset(
-                                DesignConfig.setPngPath("document_upload"),
+                                DesignConfig.setPngPath(document_upload),
                                 height: 12,
                                 width: 12,
                                 color: black,

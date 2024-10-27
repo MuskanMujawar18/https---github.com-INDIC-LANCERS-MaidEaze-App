@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class NearestScreen extends StatefulWidget {
   const NearestScreen({super.key});
@@ -155,7 +156,7 @@ class _NearestScreenState extends State<NearestScreen> {
                               width: 3,
                             ),
                             Image.asset(
-                              DesignConfig.setPngPath("setting_icon"),
+                              DesignConfig.setPngPath(setting_icon),
                               height: 12,
                               width: 12,
                             ),
@@ -234,7 +235,7 @@ class _NearestScreenState extends State<NearestScreen> {
                 ),
                 Center(
                     child: Image.asset(
-                  DesignConfig.setPngPath("nearest_not_found"),
+                  DesignConfig.setPngPath(nearest_not_found),
                   height: 250,
                   width: 250,
                 )),

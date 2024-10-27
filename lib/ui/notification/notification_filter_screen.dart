@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/notification_card.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/imagesDefine.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/notification_card.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class NotificationFilterScreen extends StatefulWidget {
   const NotificationFilterScreen({super.key});
@@ -50,7 +50,7 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     Image.asset(
-                      DesignConfig.setPngPath("setting_icon"),
+                      DesignConfig.setPngPath(setting_icon),
                       height: 12,
                       width: 12,
                     ),

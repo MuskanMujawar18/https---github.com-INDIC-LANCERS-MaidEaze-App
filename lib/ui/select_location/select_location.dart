@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/search_field.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/search_field.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class SelectLocation extends StatefulWidget {
   const SelectLocation({super.key});
@@ -19,6 +20,7 @@ class _SelectLocationState extends State<SelectLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: white,
         appBar: CustomAppBar(
           title: locationmanualyLbl,
           index: 0,
@@ -45,7 +47,7 @@ class _SelectLocationState extends State<SelectLocation> {
             ),
             Row(children: [
               Image.asset(
-                DesignConfig.setPngPath("send_icon"),
+                DesignConfig.setPngPath(send_icon),
                 height: 20,
                 width: 20,
               ),
@@ -119,7 +121,7 @@ class _SelectLocationState extends State<SelectLocation> {
                     child: Row(
                       children: [
                         Image.asset(
-                          DesignConfig.setPngPath("home_icon"),
+                          DesignConfig.setPngPath(home_icon),
                           height: 12,
                           width: 12,
                         ),
@@ -155,7 +157,7 @@ class _SelectLocationState extends State<SelectLocation> {
                     child: Row(
                       children: [
                         Image.asset(
-                          DesignConfig.setPngPath("building_icon"),
+                          DesignConfig.setPngPath(building_icon),
                           height: 12,
                           width: 12,
                         ),

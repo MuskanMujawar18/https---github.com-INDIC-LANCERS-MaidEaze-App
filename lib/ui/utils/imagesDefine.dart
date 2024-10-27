@@ -61,3 +61,16 @@ const String refer_friend = "refer_friend";
 
 const String request_send_image = "request_send_image";
 const String feedback_image = "feedback_image";
+const String coupon_image = "coupon_image";
+const String percentage_circle = "percentage_circle";
+const String edit_icon = "edit_icon";
+
+const String user_edit_icon = "user_edit_icon";
+const String support_image = "support_image";
+const String service_guidlines_image = "service_guidlines_image";
+const String queries = "queries";
+const String privacy_policy_image = "privacy_policy_image";
+const String message_edit_icon = "message_edit_icon";
+const String about_us_image = "about_us_image";
+const String anti_policy_image = "anti_policy_image";
+const String whatsapp = "whatsapp";

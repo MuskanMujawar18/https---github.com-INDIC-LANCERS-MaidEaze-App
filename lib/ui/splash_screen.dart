@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/app/routes.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/app/routes.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

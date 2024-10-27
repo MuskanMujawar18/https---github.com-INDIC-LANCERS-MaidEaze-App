@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/search_field.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/search_field.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -21,6 +21,7 @@ class _SearchScreenState extends State<SearchScreen> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: white,
       appBar: CustomAppBar(
         //title: "",
         index: 0,

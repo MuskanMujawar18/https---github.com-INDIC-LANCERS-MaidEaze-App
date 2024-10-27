@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/botton_nav.dart';
-import 'package:maideazw/ui/my_booking/current_booking_cancelled.dart';
-import 'package:maideazw/ui/my_booking/current_booking_completed.dart';
-import 'package:maideazw/ui/my_booking/current_booking_ongoing.dart';
-import 'package:maideazw/ui/my_booking/sent_request_booking.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/imagesDefine.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/botton_nav.dart';
+import 'package:maideaze/ui/my_booking/current_booking_cancelled.dart';
+import 'package:maideaze/ui/my_booking/current_booking_completed.dart';
+import 'package:maideaze/ui/my_booking/current_booking_ongoing.dart';
+import 'package:maideaze/ui/my_booking/sent_request_booking.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class MyBooking extends StatefulWidget {
   const MyBooking({super.key});
@@ -281,7 +281,7 @@ class _MyBookingState extends State<MyBooking>
                       width: 3,
                     ),
                     Image.asset(
-                      DesignConfig.setPngPath("crown_golden"),
+                      DesignConfig.setPngPath(crown_golden),
                       height: 12,
                       width: 12,
                     ),
@@ -322,7 +322,7 @@ class _MyBookingState extends State<MyBooking>
                 Row(
                   children: [
                     Image.asset(
-                      DesignConfig.setPngPath("document_text"),
+                      DesignConfig.setPngPath(document_text),
                       height: 18,
                       width: 18,
                     ),
@@ -366,7 +366,7 @@ class _MyBookingState extends State<MyBooking>
                 Row(
                   children: [
                     Image.asset(
-                      DesignConfig.setPngPath("calendar"),
+                      DesignConfig.setPngPath(calendar),
                       height: 18,
                       width: 18,
                     ),
@@ -388,7 +388,7 @@ class _MyBookingState extends State<MyBooking>
                 Row(
                   children: [
                     Image.asset(
-                      DesignConfig.setPngPath("rupees_icon"),
+                      DesignConfig.setPngPath(rupees_icon),
                       height: 18,
                       width: 18,
                     ),

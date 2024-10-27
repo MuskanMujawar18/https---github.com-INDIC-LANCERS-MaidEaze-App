@@ -1,9 +1,15 @@
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/mpin_screen/mpin_screen.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:flutter/services.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/mpin_screen/mpin_screen.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/utils/stringRes.dart';
+import 'package:maideaze/ui/utils/uiutils.dart';
 
 class LoginOtpScreen extends StatefulWidget {
   const LoginOtpScreen({super.key});
@@ -15,8 +21,48 @@ class LoginOtpScreen extends StatefulWidget {
 }
 
 class _LoginOtpScreenState extends State<LoginOtpScreen> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   double? height, width;
-  final _phoneController = TextEditingController();
+  final _otpController = TextEditingController();
+
+  Timer? _timer;
+  int _start = 120;
+  bool _isResendEnabled = false;
+  @override
+  void dispose() {
+    _otpController.dispose();
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_start == 0) {
+        setState(() {
+          timer.cancel();
+          _isResendEnabled = true;
+        });
+      } else {
+        setState(() {
+          _start--;
+        });
+      }
+    });
+  }
+
+  String _formatTime(int seconds) {
+    final minutes = (seconds / 60).floor();
+    final remainingSeconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +124,20 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
                             padding:
                                 const EdgeInsets.only(left: 15.0, right: 10.0),
                             child: TextField(
-                                controller: _phoneController,
+                                controller: _otpController,
+                                maxLength: 6,
+                                textAlign: TextAlign.center,
+                                keyboardType: TextInputType.number,
+                                onChanged: (value) {
+                                  _otpController.text = value;
+                                },
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
                                 decoration: InputDecoration(
                                     filled: true,
                                     fillColor: greyLight,
+                                    counterText: "",
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide.none,
                                       borderRadius: BorderRadius.circular(8),
@@ -122,52 +178,97 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
                 height: height,
                 width: width,
                 onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MpinScreen()));
+                  verifyOTP();
+                  // if (_otpController.text.isEmpty) {
+                  //   UiUtils.setSnackBar(
+                  //       "", StringsRes.fieldEmptyError, context, false,
+                  //       type: "2");
+                  // } else {
+                  //   PhoneAuthCredential credential =
+                  //       PhoneAuthProvider.credential(
+                  //           verificationId: LoginScreen.verify,
+                  //           smsCode: _otpController.text);
+
+                  //   // Sign the user in (or link) with the credential
+                  //   await auth.signInWithCredential(credential);
+                  //   Navigator.push(
+                  //       context,
+                  //       CupertinoPageRoute(
+                  //           builder: (context) => const MpinScreen()));
+                  // }
                 }),
             const Spacer(),
-            const Padding(
-                padding: EdgeInsets.only(left: 40.0, right: 40),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 60.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Didn’t receive it? Retry in ",
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: Manrope,
-                                color: greayLightColor),
-                          ),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Text(
-                            "29 sec",
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: Manrope,
-                                color: appColor),
-                          ),
-                        ],
+            Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40),
+              child: GestureDetector(
+                  onTap: _isResendEnabled
+                      ? () async {
+                          setState(() {
+                            _start = 120; // Reset timer
+                            _isResendEnabled = false;
+                          });
+                          _startTimer();
+                          verifyOTP();
+                          // send Otp again
+                        }
+                      : null,
+                  child: Row(
+                    children: [
+                      const SizedBox(
+                        width: 60,
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    )
-                  ],
-                ))
+                      const Text(
+                        "Didn’t receive it? Retry in",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color(0xff7B7B7B),
+                            fontSize: 12,
+                            fontFamily: Manrope,
+                            //letterSpacing: 0.06,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      Text(
+                        _isResendEnabled
+                            ? resendOtp
+                            : "${_formatTime(_start)} Sec",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: appColor,
+                            fontSize: 12,
+                            fontFamily: Manrope,
+                            letterSpacing: 0.06,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  )),
+            ),
+            const SizedBox(
+              height: 30,
+            )
           ]),
         ),
       ),
     );
+  }
+
+  bool _isFieldFilled() {
+    return _otpController.text.isNotEmpty;
+  }
+
+  void verifyOTP() async {
+    try {
+      if (_isFieldFilled()) {
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => const MpinScreen()));
+      } else {
+        UiUtils.setSnackBar("", StringsRes.fieldEmptyError, context, false,
+            type: "2");
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 }

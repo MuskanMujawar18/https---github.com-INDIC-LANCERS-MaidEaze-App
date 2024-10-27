@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/helper%20details/helper_detailed.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/helper%20details/helper_detailed.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class HelperDescription extends StatefulWidget {
   const HelperDescription({super.key});
@@ -66,7 +67,7 @@ class _HelperDescriptionState extends State<HelperDescription>
             SizedBox(
               height: 175,
               width: width,
-              child: Image.asset(DesignConfig.setPngPath("pro_image_1_flex")),
+              child: Image.asset(DesignConfig.setPngPath(pro_image_1_flex)),
             ),
             const SizedBox(height: 8),
             Row(
@@ -80,7 +81,7 @@ class _HelperDescriptionState extends State<HelperDescription>
                 ),
                 const SizedBox(width: 5),
                 Image.asset(
-                  DesignConfig.setPngPath("crown_golden"),
+                  DesignConfig.setPngPath(crown_golden),
                   height: 16,
                   width: 16,
                 ),
@@ -95,7 +96,7 @@ class _HelperDescriptionState extends State<HelperDescription>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        DesignConfig.setPngPath("star"),
+                        DesignConfig.setPngPath(star),
                         height: 12,
                         width: 12,
                       ),
@@ -370,7 +371,7 @@ class _HelperDescriptionState extends State<HelperDescription>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              DesignConfig.setPngPath("pro_image_ellipse"),
+              DesignConfig.setPngPath(pro_image_ellipse),
               height: 50,
               width: 50,
             ),
@@ -387,27 +388,27 @@ class _HelperDescriptionState extends State<HelperDescription>
                   Row(
                     children: [
                       Image.asset(
-                        DesignConfig.setPngPath("star"),
+                        DesignConfig.setPngPath(star),
                         height: 12,
                         width: 12,
                       ),
                       Image.asset(
-                        DesignConfig.setPngPath("star"),
+                        DesignConfig.setPngPath(star),
                         height: 12,
                         width: 12,
                       ),
                       Image.asset(
-                        DesignConfig.setPngPath("star"),
+                        DesignConfig.setPngPath(star),
                         height: 12,
                         width: 12,
                       ),
                       Image.asset(
-                        DesignConfig.setPngPath("star"),
+                        DesignConfig.setPngPath(star),
                         height: 12,
                         width: 12,
                       ),
                       Image.asset(
-                        DesignConfig.setPngPath("star_outlined"),
+                        DesignConfig.setPngPath(star_outlined),
                         height: 12,
                         width: 12,
                       )

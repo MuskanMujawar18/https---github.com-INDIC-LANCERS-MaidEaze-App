@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/appBar.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/global/common_screen.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/global/common_screen.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class ReviewScreen extends StatelessWidget {
   ReviewScreen({super.key});
@@ -107,27 +108,27 @@ class ReviewScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    DesignConfig.setPngPath("star"),
+                    DesignConfig.setPngPath(star),
                     height: 22.77,
                     width: 24,
                   ),
                   Image.asset(
-                    DesignConfig.setPngPath("star"),
+                    DesignConfig.setPngPath(star),
                     height: 22.77,
                     width: 24,
                   ),
                   Image.asset(
-                    DesignConfig.setPngPath("star"),
+                    DesignConfig.setPngPath(star),
                     height: 22.77,
                     width: 24,
                   ),
                   Image.asset(
-                    DesignConfig.setPngPath("star_outlined"),
+                    DesignConfig.setPngPath(star_outlined),
                     height: 22.77,
                     width: 24,
                   ),
                   Image.asset(
-                    DesignConfig.setPngPath("star_outlined"),
+                    DesignConfig.setPngPath(star_outlined),
                     height: 22.77,
                     width: 24,
                   ),
@@ -149,7 +150,7 @@ class ReviewScreen extends StatelessWidget {
                     suffixIcon: Padding(
                       padding: const EdgeInsets.only(top: 70.0, left: 25),
                       child: Image.asset(
-                        DesignConfig.setPngPath("drag_icon"),
+                        DesignConfig.setPngPath(drag_icon),
                         height: 12,
                         width: 12,
                       ),
@@ -184,7 +185,7 @@ class ReviewScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const CommonScreen(
-                        imagePath: "feedback_image",
+                        imagePath: feedback_image,
                         title: "  Thanks for giving your feedback",
                         titleFontWeight: FontWeight.w600,
                         titlefontSize: 24,
@@ -210,27 +211,27 @@ class ReviewScreen extends StatelessWidget {
     return Row(
       children: [
         Image.asset(
-          DesignConfig.setPngPath("star"),
+          DesignConfig.setPngPath(star),
           height: 16,
           width: 16,
         ),
         Image.asset(
-          DesignConfig.setPngPath("star"),
+          DesignConfig.setPngPath(star),
           height: 16,
           width: 16,
         ),
         Image.asset(
-          DesignConfig.setPngPath("star"),
+          DesignConfig.setPngPath(star),
           height: 16,
           width: 16,
         ),
         Image.asset(
-          DesignConfig.setPngPath("star"),
+          DesignConfig.setPngPath(star),
           height: 16,
           width: 16,
         ),
         Image.asset(
-          DesignConfig.setPngPath("star_outlined"),
+          DesignConfig.setPngPath(star_outlined),
           height: 16,
           width: 16,
         ),

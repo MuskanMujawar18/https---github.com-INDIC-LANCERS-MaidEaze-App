@@ -1,12 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/button.dart';
-import 'package:maideazw/ui/login_screens/login_otp.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/login_screens/login_otp.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/utils/stringRes.dart';
+import 'package:maideaze/ui/utils/uiutils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  static String verify = "";
 
   @override
   State<LoginScreen> createState() {
@@ -105,6 +110,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               const EdgeInsets.only(left: 15.0, right: 10.0),
                           child: TextField(
                               controller: _phoneController,
+                              keyboardType: TextInputType.phone,
+                              // onChanged: (value) {
+                              //   _phoneController.text = value;
+                              // },
                               decoration: InputDecoration(
                                   filled: true,
                                   fillColor: greyLight,
@@ -135,25 +144,48 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             ButtonContainer(
-                top: 8,
-                status: false,
-                borderColor: appColor,
-                bottom: 8,
-                text: "Get OTP",
-                fontSize: 16,
-                color: appColor,
-                textColor: white,
-                end: 10,
-                circularRadius: 8,
-                start: 10,
-                height: height,
-                width: width,
-                onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginOtpScreen()));
-                }),
+              top: 8,
+              status: false,
+              borderColor: appColor,
+              bottom: 8,
+              text: "Get OTP",
+              fontSize: 16,
+              color: appColor,
+              textColor: white,
+              end: 10,
+              circularRadius: 8,
+              start: 10,
+              height: height,
+              width: width,
+              onPressed: () async {
+                sendOtp();
+                // if (_phoneController.text.isEmpty) {
+                //   return UiUtils.setSnackBar(
+                //       "", StringsRes.fieldEmptyError, context, false,
+                //       type: "2");
+                // } else {
+                //   // String phoneNumber = '+91${_phoneController.text}';
+
+                //   // await FirebaseAuth.instance.verifyPhoneNumber(
+                //   //   phoneNumber: phoneNumber,
+                //   //   verificationCompleted: (PhoneAuthCredential credential) {},
+                //   //   verificationFailed: (FirebaseAuthException e) {
+                //   //     UiUtils.setSnackBar("",
+                //   //         e.message ?? "Verification failed", context, false,
+                //   //         type: "2");
+                //   //   },
+                //   //   codeSent: (String verificationId, int? resendToken) {
+                //   //     LoginScreen.verify = verificationId;
+                //   Navigator.push(
+                //       context,
+                //       CupertinoPageRoute(
+                //           builder: (context) => const LoginOtpScreen()));
+                //   //       },
+                //   //       codeAutoRetrievalTimeout: (String verificationId) {},
+                //   //     );
+                // }
+              },
+            ),
             const Spacer(),
             Center(
               child: Column(
@@ -165,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       _buildText("By proceeding, you agree with MaidEaze’s",
                           FontWeight.w400, greayLightColor),
-                      SizedBox(width: 3),
+                      const SizedBox(width: 3),
                       _buildText("terms and", FontWeight.w600, appColor),
                     ],
                   ),
@@ -176,14 +208,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         _buildText("conditions", FontWeight.w600, appColor),
-                        SizedBox(width: 3),
+                        const SizedBox(width: 3),
                         _buildText("and", FontWeight.w400, greayLightColor),
-                        SizedBox(width: 3),
+                        const SizedBox(width: 3),
                         _buildText("privacy policy", FontWeight.w600, appColor),
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 24),
                 ],
               ),
             )
@@ -191,5 +223,19 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void sendOtp() async {
+    try {
+      if (_phoneController.text.isEmpty) {
+        UiUtils.setSnackBar("", StringsRes.fieldEmptyError, context, false,
+            type: "2");
+      } else {
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => const LoginOtpScreen()));
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 }

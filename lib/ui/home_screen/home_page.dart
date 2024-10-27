@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/global/botton_nav.dart';
-import 'package:maideazw/ui/global/helper_card.dart';
-import 'package:maideazw/ui/global/search_field.dart';
-import 'package:maideazw/ui/helper%20details/helper_description.dart';
-import 'package:maideazw/ui/notification/notification.dart';
-import 'package:maideazw/ui/search_screen/searchScreen.dart';
-import 'package:maideazw/ui/select_location/select_location.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/styles/design.dart';
-import 'package:maideazw/ui/top_helpers/top_helper.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/global/botton_nav.dart';
+import 'package:maideaze/ui/global/helper_card.dart';
+import 'package:maideaze/ui/global/search_field.dart';
+import 'package:maideaze/ui/helper%20details/helper_description.dart';
+import 'package:maideaze/ui/notification/notification.dart';
+import 'package:maideaze/ui/search_screen/searchScreen.dart';
+import 'package:maideaze/ui/select_location/select_location.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
+import 'package:maideaze/ui/top_helpers/top_helper.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: white,
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 17.0, top: 40, right: 17),
+            padding: const EdgeInsets.only(left: 24.0, top: 40, right: 24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () => openLanguage(context),
                       child: Image.asset(
-                        DesignConfig.setPngPath("language"),
+                        DesignConfig.setPngPath(language),
                         height: 20,
                         width: 20,
                       ),
@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                     const NotificationScreen()));
                       },
                       child: Image.asset(
-                        DesignConfig.setPngPath("notification"),
+                        DesignConfig.setPngPath(notification),
                         height: 20,
                         width: 20,
                       ),
@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
-                          DesignConfig.setPngPath("banner"),
+                          DesignConfig.setPngPath(banner),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
-                          DesignConfig.setPngPath("banner"),
+                          DesignConfig.setPngPath(banner),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -251,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
-                          DesignConfig.setPngPath("banner"),
+                          DesignConfig.setPngPath(banner),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -277,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 24,
                 ),
                 const Align(
                   alignment: Alignment.topLeft,
@@ -286,55 +286,60 @@ class _HomePageState extends State<HomePage> {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 16,
-                      fontFamily: Manrope,
+                      fontFamily: 'Manrope',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: GridView.builder(
-                    itemCount: services.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 10.0,
-                      crossAxisSpacing: 14.0,
-                      childAspectRatio: 0.75,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  10.0), // Rounded corners
+                const SizedBox(height: 15.0),
+                GridView.builder(
+                  itemCount: services.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 12.0,
+                    crossAxisSpacing: 14.0,
+                    childAspectRatio: 0.75,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const TopHelper()));
+                              },
                               child: Image.asset(
                                 DesignConfig.setPngPath(
                                     services[index]["image"]!),
                                 fit: BoxFit.cover,
-                                height: 64, // Height for the image
-                                width: 73, // Width for the image
+                                height: 64,
+                                width: 73,
                               ),
                             ),
                           ),
-                          const SizedBox(
-                              height: 6.0), // Space between image and text
-                          Text(
-                            services[index]["name"]!,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 10.0,
-                              fontFamily: Manrope,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        ),
+                        const SizedBox(height: 6.0),
+                        Text(
+                          services[index]["name"]!,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 10.0,
+                            fontFamily: 'Manrope',
+                            fontWeight: FontWeight.w500,
                           ),
-                        ],
-                      );
-                    },
-                  ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(
                   height: 30,
@@ -369,30 +374,34 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HelperDescription()));
+                ListView.builder(
+                  itemCount: topHelpers.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    var helper = topHelpers[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const HelperDescription()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: index == 0 ? 0 : 24),
+                        child: TopHelperCard(
+                          name: helper['name'],
+                          distance: helper['distance'],
+                          rating: helper['rating'],
+                          price: helper['price'],
+                          isFavorite: helper['isFavorite'],
+                          imageUrl: helper['imageUrl'],
+                          rank: helper['rank'],
+                        ),
+                      ),
+                    );
                   },
-                  child: ListView.builder(
-                    itemCount: topHelpers.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      var helper = topHelpers[index];
-                      return TopHelperCard(
-                        name: helper['name'],
-                        distance: helper['distance'],
-                        rating: helper['rating'],
-                        price: helper['price'],
-                        isFavorite: helper['isFavorite'],
-                        imageUrl: helper['imageUrl'],
-                        rank: helper['rank'],
-                      );
-                    },
-                  ),
                 ),
                 const SizedBox(
                   height: 30,
@@ -425,14 +434,17 @@ class _HomePageState extends State<HomePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     var helper = favHelpers[index];
-                    return TopHelperCard(
-                      name: helper['name'],
-                      distance: helper['distance'],
-                      rating: helper['rating'],
-                      price: helper['price'],
-                      isFavorite: helper['isFavorite'],
-                      imageUrl: helper['imageUrl'],
-                      rank: helper['rank'],
+                    return Container(
+                      margin: EdgeInsets.only(top: index == 0 ? 0 : 24),
+                      child: TopHelperCard(
+                        name: helper['name'],
+                        distance: helper['distance'],
+                        rating: helper['rating'],
+                        price: helper['price'],
+                        isFavorite: helper['isFavorite'],
+                        imageUrl: helper['imageUrl'],
+                        rank: helper['rank'],
+                      ),
                     );
                   },
                 ),
@@ -526,7 +538,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       Image.asset(
-                        DesignConfig.setPngPath("home_icon"),
+                        DesignConfig.setPngPath(home_icon),
                         height: 12,
                         width: 12,
                       ),
@@ -562,7 +574,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       Image.asset(
-                        DesignConfig.setPngPath("building_icon"),
+                        DesignConfig.setPngPath(building_icon),
                         height: 12,
                         width: 12,
                       ),

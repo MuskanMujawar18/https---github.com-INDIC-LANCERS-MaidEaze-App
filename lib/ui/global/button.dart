@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
 
 class ButtonContainer extends StatefulWidget {
   final double? width,

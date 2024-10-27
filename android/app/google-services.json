@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "268497476692",
+    "project_id": "maideaze-ddbc9",
+    "storage_bucket": "maideaze-ddbc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268497476692:android:3ae87f11994efad05de1c1",
+        "android_client_info": {
+          "package_name": "com.example.maideaze"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt8r9Uat2kZQrndACxghPPwo5fQlIkie0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

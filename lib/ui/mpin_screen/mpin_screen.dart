@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:maideazw/ui/home_screen/home_page.dart';
-import 'package:maideazw/ui/styles/color.dart';
-import 'package:maideazw/ui/utils/constansts.dart';
-import 'package:maideazw/ui/utils/labelKeys.dart';
+import 'package:maideaze/ui/home_screen/home_page.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
 class MpinScreen extends StatefulWidget {
   const MpinScreen({super.key});
