@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/common_screen.dart';
+import 'package:maideaze/ui/profile_screens/support/query_chat_pro.dart';
+import 'package:maideaze/ui/profile_screens/support/query_chat_res.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';
@@ -109,21 +111,30 @@ class _QueryScreenState extends State<QueryScreen>
                             titlefontSize: 12,
                             titleFontWeight: FontWeight.w400,
                             titlefontColor: greayLightColor)
-                        : ListView.builder(
-                            padding: const EdgeInsets.only(top: 24),
-                            itemCount: openQueries.length,
-                            itemBuilder: (context, index) {
-                              final query = openQueries[index];
-                              return queryContainer(
-                                query["title"] ?? "Title of Query",
-                                query["status"] ?? "Processing",
-                                const Color(0xffFF9800) as Color?,
-                                const Color.fromRGBO(255, 152, 0, 0.2)
-                                    as Color?,
-                                query["ticketId"] ?? "Ticket Id",
-                                query["date"] ?? "12/09/2024",
-                              );
+                        : GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const QueryChatPro()));
                             },
+                            child: ListView.builder(
+                              padding: const EdgeInsets.only(top: 24),
+                              itemCount: openQueries.length,
+                              itemBuilder: (context, index) {
+                                final query = openQueries[index];
+                                return queryContainer(
+                                  query["title"] ?? "Title of Query",
+                                  query["status"] ?? "Processing",
+                                  const Color(0xffFF9800) as Color?,
+                                  const Color.fromRGBO(255, 152, 0, 0.2)
+                                      as Color?,
+                                  query["ticketId"] ?? "Ticket Id",
+                                  query["date"] ?? "12/09/2024",
+                                );
+                              },
+                            ),
                           ),
                     closedQueries.isEmpty
                         ? const CommonScreen(
@@ -132,21 +143,30 @@ class _QueryScreenState extends State<QueryScreen>
                             titlefontSize: 12,
                             titleFontWeight: FontWeight.w400,
                             titlefontColor: greayLightColor)
-                        : ListView.builder(
-                            padding: const EdgeInsets.only(top: 24),
-                            itemCount: closedQueries.length,
-                            itemBuilder: (context, index) {
-                              final query = closedQueries[index];
-                              return queryContainer(
-                                query["title"] ?? "Title of Query",
-                                query["status"] ?? "Resolved",
-                                appColor as Color?,
-                                const Color.fromRGBO(181, 228, 202, 0.25)
-                                    as Color?,
-                                query["ticketId"] ?? "Ticket Id",
-                                query["date"] ?? "12/09/2024",
-                              );
+                        : GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const QueryChatRes()));
                             },
+                            child: ListView.builder(
+                              padding: const EdgeInsets.only(top: 24),
+                              itemCount: closedQueries.length,
+                              itemBuilder: (context, index) {
+                                final query = closedQueries[index];
+                                return queryContainer(
+                                  query["title"] ?? "Title of Query",
+                                  query["status"] ?? "Resolved",
+                                  appColor as Color?,
+                                  const Color.fromRGBO(181, 228, 202, 0.25)
+                                      as Color?,
+                                  query["ticketId"] ?? "Ticket Id",
+                                  query["date"] ?? "12/09/2024",
+                                );
+                              },
+                            ),
                           ),
                   ],
                 ),

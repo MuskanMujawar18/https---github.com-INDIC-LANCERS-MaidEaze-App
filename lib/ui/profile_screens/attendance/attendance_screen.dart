@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:maideaze/ui/global/appBar.dart';
+import 'package:maideaze/ui/global/common_screen.dart';
 import 'package:maideaze/ui/profile_screens/attendance/attendance_detailed.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
@@ -19,10 +20,13 @@ class AttendanceScreen extends StatefulWidget {
 
 class _AttendanceScreenState extends State<AttendanceScreen> {
   double? height, width;
+  bool isAttendanceEmpty = false;
+
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: white,
       appBar: CustomAppBar(
@@ -37,32 +41,44 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            attendanceCard(
-                pro_image_1, "Akshita Sing", "gold", 4.5, "2.5 Km", "Cooking",
-                () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AttendanceDetailed()));
-            }),
-            const SizedBox(
-              height: 24,
-            ),
-            attendanceCard(pro_image_1, "Akshita Sing", "gold", 4.5, "2.5 Km",
-                "Cooking + Cleaning", () {}),
-            const SizedBox(
-              height: 24,
-            ),
-            attendanceCard(pro_image_1, "Akshita Sing", "gold", 4.5, "2.5 Km",
-                "Vessel Cleaning", () {}),
-          ],
-        ),
+        child: isAttendanceEmpty
+            ? CommonScreen(
+                imagePath: attendance_image,
+                title:
+                    "Book a service provider, to see their  attendance here!",
+                titlefontSize: 12,
+                titleFontWeight: FontWeight.w400,
+                titlefontColor: greayLightColor)
+            : _buildAttendanceList(),
       ),
+    );
+  }
+
+  // Method to show the list of attendance cards
+  Widget _buildAttendanceList() {
+    return Column(
+      children: [
+        const SizedBox(
+          height: 10,
+        ),
+        attendanceCard(
+            pro_image_1, "Akshita Sing", "gold", 4.5, "2.5 Km", "Cooking", () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AttendanceDetailed()));
+        }),
+        const SizedBox(
+          height: 24,
+        ),
+        attendanceCard(pro_image_1, "Akshita Sing", "gold", 4.5, "2.5 Km",
+            "Cooking + Cleaning", () {}),
+        const SizedBox(
+          height: 24,
+        ),
+        attendanceCard(pro_image_1, "Akshita Sing", "gold", 4.5, "2.5 Km",
+            "Vessel Cleaning", () {}),
+      ],
     );
   }
 

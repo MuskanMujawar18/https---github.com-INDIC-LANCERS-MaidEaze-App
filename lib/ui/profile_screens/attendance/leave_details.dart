@@ -162,7 +162,7 @@ class _LeaveDetailedState extends State<LeaveDetailed> {
                                   color: black,
                                   fontWeight: FontWeight.w400),
                             ),
-                            SizedBox(height: 16),
+                            SizedBox(height: 8),
                             Align(
                               alignment: Alignment.centerRight,
                               child: ButtonContainer(
@@ -171,14 +171,14 @@ class _LeaveDetailedState extends State<LeaveDetailed> {
                                   borderColor: appColor,
                                   bottom: 0,
                                   text: approveLbl,
-                                  fontSize: 16,
+                                  fontSize: 12,
                                   color: isApproved1 ? white : appColor,
                                   textColor: isApproved1 ? appColor : white,
                                   end: 0,
                                   circularRadius: 8,
                                   start: 0,
-                                  height: height! / 1.3,
-                                  width: width! / 2.5,
+                                  height: height! / 1.7,
+                                  width: width! / 3.2,
                                   onPressed: isApproved1
                                       ? null
                                       : () {
@@ -228,7 +228,7 @@ class _LeaveDetailedState extends State<LeaveDetailed> {
                                   color: black,
                                   fontWeight: FontWeight.w400),
                             ),
-                            SizedBox(height: 16),
+                            SizedBox(height: 8),
                             Align(
                               alignment: Alignment.centerRight,
                               child: ButtonContainer(
@@ -237,14 +237,14 @@ class _LeaveDetailedState extends State<LeaveDetailed> {
                                   borderColor: appColor,
                                   bottom: 0,
                                   text: approveLbl,
-                                  fontSize: 16,
+                                  fontSize: 12,
                                   color: isApproved2 ? white : appColor,
                                   textColor: isApproved2 ? appColor : white,
                                   end: 0,
                                   circularRadius: 8,
                                   start: 0,
-                                  height: height! / 1.3,
-                                  width: width! / 2.5,
+                                  height: height! / 1.7,
+                                  width: width! / 3.2,
                                   onPressed: isApproved2
                                       ? null
                                       : () {

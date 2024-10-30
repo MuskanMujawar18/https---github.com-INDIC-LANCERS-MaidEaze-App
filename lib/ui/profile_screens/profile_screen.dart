@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/botton_nav.dart';
 import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/login_screens/login_screen.dart';
 import 'package:maideaze/ui/profile_screens/aboutus_screen.dart';
 import 'package:maideaze/ui/profile_screens/anti_policy_screen.dart';
 import 'package:maideaze/ui/profile_screens/attendance/attendance_screen.dart';
@@ -9,6 +10,7 @@ import 'package:maideaze/ui/profile_screens/document_screen/document_screen.dart
 import 'package:maideaze/ui/profile_screens/manage_address/manage_address.dart';
 import 'package:maideaze/ui/profile_screens/privacy_policy_screen.dart';
 import 'package:maideaze/ui/profile_screens/service_guidlines_screen.dart';
+import 'package:maideaze/ui/profile_screens/setting_screen.dart';
 import 'package:maideaze/ui/profile_screens/support/support_screen.dart';
 import 'package:maideaze/ui/profile_screens/update_profile/update_profile_screen.dart';
 import 'package:maideaze/ui/profile_screens/verify/verify_screen.dart';
@@ -31,7 +33,19 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   double? height, width;
 
+  @override
   Widget build(BuildContext context) {
+    void showLogOutPopup(context) {
+      showModalBottomSheet(
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(30),
+            ),
+          ),
+          builder: (ctx) => logoutBottomsheet(context));
+    }
+
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -52,11 +66,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
         showBackButton: true,
         rightIcon: IconButton(
           icon: const Icon(
-            Icons.settings,
-            color: Colors.white,
+            Icons.settings_outlined,
+            color: black,
             size: 20,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SettingsScreen()));
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -280,36 +299,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: greayColor)),
-              child: Row(
-                children: [
-                  Image.asset(
-                    DesignConfig.setPngPath(logout),
-                    width: 20,
-                    height: 20,
-                    fit: BoxFit.contain,
-                    color: const Color(0xffE50404),
-                  ),
-                  const SizedBox(width: 12),
-                  const Text(
-                    "Logout",
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: Manrope,
-                      color: Color(0xffE50404),
+            GestureDetector(
+              onTap: () {
+                showLogOutPopup(context);
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: greayColor)),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      DesignConfig.setPngPath(logout),
+                      width: 20,
+                      height: 20,
+                      fit: BoxFit.contain,
+                      color: const Color(0xffE50404),
                     ),
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.keyboard_arrow_right_rounded,
-                    size: 16,
-                  )
-                ],
+                    const SizedBox(width: 12),
+                    const Text(
+                      "Logout",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: Manrope,
+                        color: Color(0xffE50404),
+                      ),
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      size: 16,
+                    )
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -485,5 +510,84 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  Widget logoutBottomsheet(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+        //decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+        height: 174,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Text(
+            "Logout",
+            style: const TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w700,
+              fontFamily: Manrope,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Text(
+            "Are you sure you want to logout from the app?",
+            style: const TextStyle(
+              fontSize: 12.0,
+              fontWeight: FontWeight.w400,
+              fontFamily: Manrope,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ButtonContainer(
+                  top: 8,
+                  status: false,
+                  borderColor: appColor,
+                  bottom: 5,
+                  text: cancelLbl,
+                  fontSize: 16,
+                  color: white,
+                  textColor: appColor,
+                  end: 0,
+                  circularRadius: 8,
+                  start: 00,
+                  height: height! / 1.2,
+                  width: width! / 3,
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  }),
+              const SizedBox(
+                width: 5,
+              ),
+              ButtonContainer(
+                  top: 8,
+                  status: false,
+                  borderColor: appColor,
+                  bottom: 5,
+                  text: logoutLbl,
+                  fontSize: 16,
+                  color: appColor,
+                  textColor: white,
+                  end: 00,
+                  circularRadius: 8,
+                  start: 00,
+                  height: height! / 1.2,
+                  width: width! / 3,
+                  onPressed: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
+                  })
+            ],
+          )
+        ]));
   }
 }

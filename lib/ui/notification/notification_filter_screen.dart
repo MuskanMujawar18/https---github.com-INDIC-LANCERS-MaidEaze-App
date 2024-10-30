@@ -79,9 +79,9 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 187, 225, 212),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: greayColor)),
+                    color: lightgreen,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: const NotificationCard(
                     request: "Geeta accepts your cooking service request",
                     duration: "12h",
@@ -90,12 +90,8 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                     imageUrl: pro_image_1,
                   ),
                 ),
-                const NotificationCard(
-                  request: "Geeta accepts your cooking service request",
-                  duration: "20h",
-                  moredetailed: "Tap to see details ",
-                  moredetailedColor: greayLightColor,
-                  imageUrl: pro_image_1,
+                const SizedBox(
+                  height: 15,
                 ),
                 const NotificationCard(
                   request: "Geeta accepts your cooking service request",
@@ -103,6 +99,19 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
                   moredetailed: "Tap to see details ",
                   moredetailedColor: greayLightColor,
                   imageUrl: pro_image_1,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const NotificationCard(
+                  request: "Geeta accepts your cooking service request",
+                  duration: "20h",
+                  moredetailed: "Tap to see details ",
+                  moredetailedColor: greayLightColor,
+                  imageUrl: pro_image_1,
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 const NotificationCard(
                   request: "Geeta accepts your cooking service request",

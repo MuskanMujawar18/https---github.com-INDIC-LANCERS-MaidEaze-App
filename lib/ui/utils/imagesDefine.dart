@@ -74,3 +74,4 @@ const String message_edit_icon = "message_edit_icon";
 const String about_us_image = "about_us_image";
 const String anti_policy_image = "anti_policy_image";
 const String whatsapp = "whatsapp";
+const String attendance_image = "attendance_image";

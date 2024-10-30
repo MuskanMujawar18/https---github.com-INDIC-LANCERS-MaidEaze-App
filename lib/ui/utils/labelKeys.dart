@@ -72,3 +72,6 @@ const String aboutusLbl = "About Us";
 const String serviceguidlineLbl = "Service Guidlines";
 const String privacypolicyLbl = "Privacy Policy";
 const String antipolicyLbl = "Anti-Discriminatory Policy";
+const String cancelLbl = "CANCEL";
+const String logoutLbl = "LOGOUT";
+const String settingLbl = "Settings";

@@ -23,7 +23,7 @@ class NotificationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      // margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       // padding: const EdgeInsets.only(top: 10, bottom: 10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

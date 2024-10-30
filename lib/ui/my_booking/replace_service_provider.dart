@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
-import 'package:maideaze/ui/global/common_screen.dart';
+
+import 'package:maideaze/ui/my_booking/confirmed_screen.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
@@ -31,7 +32,7 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
 
     return Scaffold(
       backgroundColor: white,
-      resizeToAvoidBottomInset: true, // Allows resizing when keyboard opens
+      resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
         title: replaceproviderLbl,
         index: 0,
@@ -43,17 +44,17 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
         showBackButton: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Color(0xffF3F3F3),
+                color: const Color(0xffF3F3F3),
               ),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -63,7 +64,7 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
                         fontSize: 12,
                         fontWeight: FontWeight.w700),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   Text(
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the ",
                     style: TextStyle(
@@ -74,76 +75,45 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
                 ],
               ),
             ),
-            const SizedBox(height: 25),
-            Text(
+            const SizedBox(height: 36),
+            const Text(
               "Select Reason",
               style: TextStyle(
                   fontFamily: Manrope,
                   fontSize: 14,
                   fontWeight: FontWeight.w600),
             ),
-            CheckboxListTile(
-              title: Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been',
-                style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: Manrope,
-                    color: black),
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
+            const SizedBox(height: 12),
+            _buildCustomCheckboxRow(
+              text:
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been',
               value: reason1,
-              side: BorderSide(color: appColor, width: 2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
               onChanged: (bool? value) {
                 setState(() {
                   reason1 = value ?? false;
                 });
               },
-              activeColor: appColor,
             ),
-            CheckboxListTile(
-              title: Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been',
-                style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: Manrope,
-                    color: black),
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
+            const SizedBox(height: 12),
+            _buildCustomCheckboxRow(
+              text:
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been',
               value: reason2,
-              side: BorderSide(color: appColor, width: 2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
               onChanged: (bool? value) {
                 setState(() {
                   reason2 = value ?? false;
                 });
               },
-              activeColor: appColor,
             ),
-            CheckboxListTile(
-              title: Text(
-                'Other Reason',
-                style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: Manrope,
-                    color: black),
-              ),
-              controlAffinity: ListTileControlAffinity.leading,
+            const SizedBox(height: 12),
+            _buildCustomCheckboxRow(
+              text: 'Other Reason',
               value: others,
-              side: BorderSide(color: appColor, width: 2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
               onChanged: (bool? value) {
                 setState(() {
                   others = value ?? false;
                 });
               },
-              activeColor: appColor,
             ),
             if (others)
               Padding(
@@ -151,7 +121,7 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Give Reason',
                       style: TextStyle(
                           fontSize: 14,
@@ -174,14 +144,14 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
                           ),
                         ),
                         hintText: "Write something",
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             fontFamily: Manrope,
                             color: Color(0xffC4C4C4),
                             fontSize: 12,
                             fontWeight: FontWeight.w400),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: greyLight)),
+                            borderSide: const BorderSide(color: greyLight)),
                       ),
                     ),
                   ],
@@ -208,24 +178,59 @@ class _ReplaceServiceProviderState extends State<ReplaceServiceProvider> {
           height: height,
           width: width,
           onPressed: () async {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const CommonScreen(
-                          imagePath: "request_send_image",
-                          title: "Confirmed!",
-                          titlefontSize: 32,
-                          titleFontWeight: FontWeight.w600,
-                          titlefontColor: black,
-                          subtitle:
-                              "Service provider is replaced.\nRefund amount will be added to your\nMaidEaze’s wallet.",
-                          subtitleFontWeight: FontWeight.w500,
-                          subtitlefontColor: greayLightColor,
-                          sutitleFontSize: 12,
-                        )));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ConfirmedScreen()));
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildCustomCheckboxRow({
+    required String text,
+    required bool value,
+    required Function(bool?) onChanged,
+  }) {
+    return Row(
+      children: [
+        GestureDetector(
+          onTap: () => onChanged(!value),
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(3),
+              border: Border.all(
+                color: appColor,
+                width: 2,
+              ),
+              color: value ? appColor : Colors.transparent,
+            ),
+            width: 16,
+            height: 16,
+            child: value
+                ? const Icon(
+                    Icons.check,
+                    size: 12,
+                    color: Colors.white,
+                  )
+                : null,
+          ),
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Expanded(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              fontFamily: Manrope,
+              color: black,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

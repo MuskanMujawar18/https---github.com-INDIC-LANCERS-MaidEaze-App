@@ -4,13 +4,14 @@ import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/botton_nav.dart';
 import 'package:maideaze/ui/global/button.dart';
 import 'package:maideaze/ui/global/common_screen.dart';
-import 'package:maideaze/ui/global/helper_card.dart';
-import 'package:maideaze/ui/styles/color.dart';
-import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/top_helpers/nearest_screen.dart';
-import 'package:maideaze/ui/utils/constansts.dart';
-import 'package:maideaze/ui/utils/imagesDefine.dart';
-import 'package:maideaze/ui/utils/labelKeys.dart';
+
+import '../global/helper_card.dart';
+import '../styles/color.dart';
+import '../styles/design.dart';
+import '../utils/constansts.dart';
+import '../utils/imagesDefine.dart';
+import '../utils/labelKeys.dart';
 
 class FavScreen extends StatefulWidget {
   const FavScreen({super.key});

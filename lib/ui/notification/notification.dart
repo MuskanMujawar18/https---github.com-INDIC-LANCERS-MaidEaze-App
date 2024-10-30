@@ -19,18 +19,25 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   double? height, width;
+  String? selectedFilter = "Today";
 
   @override
   Widget build(BuildContext context) {
     void opennotificationsheet(context) {
       showModalBottomSheet(
           context: context,
+          isScrollControlled: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(30),
             ),
           ),
-          builder: (ctx) => nofiticationbottomsheet(context));
+          builder: (ctx) => StatefulBuilder(
+                builder:
+                    (BuildContext context, StateSetter setBottomSheetState) {
+                  return nofiticationbottomsheet(context, setBottomSheetState);
+                },
+              ));
     }
 
     width = MediaQuery.of(context).size.width;
@@ -46,28 +53,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
         titleColor: Colors.black,
         iconColor: black,
         showBackButton: true,
-        // rightIcon: IconButton(
-        //   icon: Icon(
-        //     Icons.notifications_none, // Notification icon
-        //     color: Colors.white,
-        //     size: 28,
-        //   ),
-        //   onPressed: () {
-        //     // Do something when notification icon is pressed
-        //     print("Notification icon pressed");
-        //   },
-        // ),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 0, 15, 15),
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 15),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 250.0),
-              child: Card(
-                child: SizedBox(
-                  height: 25,
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                padding: EdgeInsets.only(left: width! / 1.55),
+                height: 30,
+                child: Card(
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     Image.asset(
@@ -77,7 +73,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     ),
                     GestureDetector(
                       onTap: () => opennotificationsheet(context),
-                      child: Text(
+                      child: const Text(
                         "  Filter",
                         style: TextStyle(
                             fontFamily: Manrope,
@@ -85,7 +81,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             fontWeight: FontWeight.w500),
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.arrow_drop_down,
                       size: 18,
                     )
@@ -100,10 +96,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 187, 225, 212),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: greayColor)),
-                  child: NotificationCard(
+                    color: const Color.fromRGBO(181, 228, 202, 0.26),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const NotificationCard(
                     request:
                         "Akshita Singh send an offer for your cleaning service request.",
                     duration: "12h",
@@ -112,21 +108,30 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     imageUrl: pro_image_1,
                   ),
                 ),
-                NotificationCard(
+                const SizedBox(
+                  height: 15,
+                ),
+                const NotificationCard(
                   request: "Geeta accepts your cooking service \nrequest.",
                   duration: "20h",
                   moredetailed: "Tap to see details ",
                   moredetailedColor: greayLightColor,
                   imageUrl: pro_image_1,
                 ),
-                NotificationCard(
+                const SizedBox(
+                  height: 15,
+                ),
+                const NotificationCard(
                   request: "Geeta accepts your cooking service \nrequest.",
                   duration: "20h",
                   moredetailed: "Tap to see details ",
                   moredetailedColor: greayLightColor,
                   imageUrl: pro_image_1,
                 ),
-                NotificationCard(
+                const SizedBox(
+                  height: 15,
+                ),
+                const NotificationCard(
                   request: "Geeta accepts your cooking service \nrequest.",
                   duration: "20h",
                   moredetailed: "Tap to see details ",
@@ -141,15 +146,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 
-  Widget nofiticationbottomsheet(BuildContext context) {
+  Widget nofiticationbottomsheet(
+      BuildContext context, StateSetter setBottomSheetState) {
     return Container(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 36),
       height: 400,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: const Text(
+          const Center(
+            child: Text(
               'Filter by Notification Date',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -161,35 +167,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
           const SizedBox(height: 15),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: greayColor)),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: greayColor),
+              ),
               child: ListView(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFD7EEE6), //green color
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 8, top: 12, bottom: 12),
-                      child: Text(
-                        'Today',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: Manrope,
-                          color: appColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                  _buildByDate("Last 30 Days"),
-                  _buildByDate("Last 3 Months"),
-                  _buildByDate("Last 6 Months"),
-                  _buildByDate("2024"),
-                  _buildByDate("2023"),
+                  _buildByDate("Today", setBottomSheetState),
+                  _buildByDate("Last 30 Days", setBottomSheetState),
+                  _buildByDate("Last 3 Months", setBottomSheetState),
+                  _buildByDate("2024", setBottomSheetState),
+                  _buildByDate("2023", setBottomSheetState),
                 ],
               ),
             ),
@@ -223,16 +212,29 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 
-  Widget _buildByDate(String date) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Text(
-        date,
-        style: TextStyle(
-          fontSize: 12,
-          fontFamily: Manrope,
-          fontWeight: FontWeight.w500,
-          color: black,
+  Widget _buildByDate(String date, StateSetter setBottomSheetState) {
+    bool isSelected = selectedFilter == date;
+    return GestureDetector(
+      onTap: () {
+        setBottomSheetState(() {
+          selectedFilter = date;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: isSelected
+              ? Color.fromRGBO(181, 228, 202, 0.25)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+        child: Text(
+          date,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            color: isSelected ? appColor : Colors.black,
+          ),
         ),
       ),
     );

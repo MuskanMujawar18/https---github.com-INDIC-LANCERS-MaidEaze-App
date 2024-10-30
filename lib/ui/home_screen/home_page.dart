@@ -114,17 +114,18 @@ class _HomePageState extends State<HomePage> {
     void openLanguage(context) {
       showModalBottomSheet(
           context: context,
+          isScrollControlled: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(30),
             ),
           ),
-          builder: (ctx) {
-            return StatefulBuilder(
-                builder: (BuildContext context, StateSetter setState) {
-              return locationSelection(context);
-            });
-          });
+          builder: (ctx) => StatefulBuilder(
+                builder:
+                    (BuildContext context, StateSetter setBottomSheetState) {
+                  return languageSelection(context, setBottomSheetState);
+                },
+              ));
     }
 
     width = MediaQuery.of(context).size.width;
@@ -467,7 +468,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget locationSelection(BuildContext context) {
+  Widget languageSelection(
+      BuildContext context, StateSetter setBottomSheetState) {
     return Container(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 36),
       height: 400,
@@ -493,13 +495,13 @@ class _HomePageState extends State<HomePage> {
                   border: Border.all(color: greayColor)),
               child: ListView(
                 children: [
-                  _buildLanguageItem('English'),
-                  _buildLanguageItem('हिन्दी'),
-                  _buildLanguageItem('मराठी'),
-                  _buildLanguageItem('తెలుగు'),
-                  _buildLanguageItem('தமிழ்'),
-                  _buildLanguageItem('മലയാളം'),
-                  _buildLanguageItem('ಕನ್ನಡ'),
+                  _buildLanguageItem('English', setBottomSheetState),
+                  _buildLanguageItem('हिन्दी', setBottomSheetState),
+                  _buildLanguageItem('मराठी', setBottomSheetState),
+                  _buildLanguageItem('తెలుగు', setBottomSheetState),
+                  _buildLanguageItem('தமிழ்', setBottomSheetState),
+                  _buildLanguageItem('മലയാളം', setBottomSheetState),
+                  _buildLanguageItem('ಕನ್ನಡ', setBottomSheetState),
                 ],
               ),
             ),
@@ -621,13 +623,13 @@ class _HomePageState extends State<HomePage> {
         ]));
   }
 
-  Widget _buildLanguageItem(String language) {
+  Widget _buildLanguageItem(String language, StateSetter setBottomSheetState) {
     bool isSelected = _selectedLanguage == language; // Check if selected
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _selectedLanguage = language; // Update selected language
+        setBottomSheetState(() {
+          _selectedLanguage = language;
         });
       },
       child: Container(

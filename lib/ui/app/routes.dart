@@ -1,47 +1,54 @@
+//import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:maideaze/ui/favorites_screen/fav_screen.dart';
-import 'package:maideaze/ui/helper%20details/helper_description.dart';
-import 'package:maideaze/ui/helper%20details/helper_detailed.dart';
-import 'package:maideaze/ui/home_screen/home_page.dart';
-import 'package:maideaze/ui/login_screens/login_otp.dart';
-import 'package:maideaze/ui/login_screens/login_screen.dart';
-import 'package:maideaze/ui/mpin_screen/mpin_screen.dart';
-import 'package:maideaze/ui/my_booking/add_coupon.dart';
-import 'package:maideaze/ui/my_booking/coupon_sent_request.dart';
-import 'package:maideaze/ui/my_booking/current_booking_ongoing.dart';
-import 'package:maideaze/ui/my_booking/my_booking.dart';
-import 'package:maideaze/ui/my_booking/current_booking_cancelled.dart';
-import 'package:maideaze/ui/my_booking/current_booking_completed.dart';
-import 'package:maideaze/ui/my_booking/replace_service_provider.dart';
-import 'package:maideaze/ui/my_booking/sent_request_booking.dart';
-import 'package:maideaze/ui/notification/notification.dart';
-import 'package:maideaze/ui/notification/notification_filter_screen.dart';
-import 'package:maideaze/ui/onboardingScreens/onboarding.dart';
-import 'package:maideaze/ui/profile_screens/aboutus_screen.dart';
-import 'package:maideaze/ui/profile_screens/anti_policy_screen.dart';
-import 'package:maideaze/ui/profile_screens/attendance/attendance_screen.dart';
-import 'package:maideaze/ui/profile_screens/attendance/leave_details.dart';
-import 'package:maideaze/ui/profile_screens/document_screen/document_screen.dart';
-import 'package:maideaze/ui/profile_screens/manage_address/add_new_address.dart';
-import 'package:maideaze/ui/profile_screens/manage_address/manage_address.dart';
-import 'package:maideaze/ui/profile_screens/privacy_policy_screen.dart';
-import 'package:maideaze/ui/profile_screens/profile_screen.dart';
-import 'package:maideaze/ui/profile_screens/service_guidlines_screen.dart';
-import 'package:maideaze/ui/profile_screens/support/faq_detailes.dart';
-import 'package:maideaze/ui/profile_screens/support/faq_screen.dart';
-import 'package:maideaze/ui/profile_screens/support/help_center.dart';
-import 'package:maideaze/ui/profile_screens/support/query_screen.dart';
-import 'package:maideaze/ui/profile_screens/support/support_screen.dart';
-import 'package:maideaze/ui/profile_screens/update_profile/update_profile_screen.dart';
-import 'package:maideaze/ui/profile_screens/verify/police_varification_screen.dart';
-import 'package:maideaze/ui/profile_screens/verify/verify_screen.dart';
-import 'package:maideaze/ui/profile_screens/wallet/wallet_screen.dart';
-import 'package:maideaze/ui/review_screen/review_screen.dart';
-import 'package:maideaze/ui/search_screen/searchScreen.dart';
-import 'package:maideaze/ui/select_location/select_location.dart';
+import 'package:flutter/material.dart';
+import 'package:maideaze/ui/my_booking/confirmed_screen.dart';
+import 'package:maideaze/ui/profile_screens/setting_screen.dart';
+import 'package:maideaze/ui/profile_screens/support/query_chat_pro.dart';
+import 'package:maideaze/ui/profile_screens/support/query_chat_res.dart';
 import 'package:maideaze/ui/splash_screen.dart';
-import 'package:maideaze/ui/top_helpers/top_helper.dart';
 import 'package:maideaze/ui/top_helpers/nearest_screen.dart';
+import 'package:maideaze/ui/top_helpers/top_helper.dart';
+
+import '../favorites_screen/fav_screen.dart';
+import '../helper details/helper_description.dart';
+import '../helper details/helper_detailed.dart';
+import '../home_screen/home_page.dart';
+import '../login_screens/login_otp.dart';
+import '../login_screens/login_screen.dart';
+import '../mpin_screen/mpin_screen.dart';
+import '../my_booking/add_coupon.dart';
+import '../my_booking/coupon_sent_request.dart';
+import '../my_booking/current_booking_cancelled.dart';
+import '../my_booking/current_booking_completed.dart';
+import '../my_booking/current_booking_ongoing.dart';
+import '../my_booking/my_booking.dart';
+import '../my_booking/replace_service_provider.dart';
+import '../my_booking/sent_request_booking.dart';
+import '../notification/notification.dart';
+import '../notification/notification_filter_screen.dart';
+import '../onboardingScreens/onboarding.dart';
+import '../profile_screens/aboutus_screen.dart';
+import '../profile_screens/anti_policy_screen.dart';
+import '../profile_screens/attendance/attendance_screen.dart';
+import '../profile_screens/attendance/leave_details.dart';
+import '../profile_screens/document_screen/document_screen.dart';
+import '../profile_screens/manage_address/add_new_address.dart';
+import '../profile_screens/manage_address/manage_address.dart';
+import '../profile_screens/privacy_policy_screen.dart';
+import '../profile_screens/profile_screen.dart';
+import '../profile_screens/service_guidlines_screen.dart';
+import '../profile_screens/support/faq_detailes.dart';
+import '../profile_screens/support/faq_screen.dart';
+import '../profile_screens/support/help_center.dart';
+import '../profile_screens/support/query_screen.dart';
+import '../profile_screens/support/support_screen.dart';
+import '../profile_screens/update_profile/update_profile_screen.dart';
+import '../profile_screens/verify/police_varification_screen.dart';
+import '../profile_screens/verify/verify_screen.dart';
+import '../profile_screens/wallet/wallet_screen.dart';
+import '../review_screen/review_screen.dart';
+import '../search_screen/searchScreen.dart';
+import '../select_location/select_location.dart';
 
 class Routes {
   static const splash = '/';
@@ -87,6 +94,10 @@ class Routes {
   static const antipolicy = '/antipolicy';
   static const privacypolicy = '/privacypolicy';
   static const aboutus = '/aboutus';
+  static const settingscreen = '/settingscreen';
+  static const querychatpro = '/querychatpro';
+  static const querychatres = '/querychatres';
+  static const confirmedscreen = '/confirmedscreen';
   static String currentRoute = splash;
 
   static Route<dynamic> onGenerateRouted(RouteSettings routeSettings) {
@@ -94,7 +105,7 @@ class Routes {
 
     switch (routeSettings.name) {
       case splash:
-        return CupertinoPageRoute(builder: (context) => const SplashScreen());
+        return CupertinoPageRoute(builder: (context) => SplashScreen());
       case onboarding:
         return CupertinoPageRoute(
             builder: (context) => const OnboardingScreen());
@@ -190,6 +201,15 @@ class Routes {
         return CupertinoPageRoute(builder: (context) => PrivacyPolicyScreen());
       case aboutus:
         return CupertinoPageRoute(builder: (context) => AboutusScreen());
+      case settingscreen:
+        return CupertinoPageRoute(builder: (context) => SettingsScreen());
+      case confirmedscreen:
+        return CupertinoPageRoute(builder: (context) => ConfirmedScreen());
+      case querychatres:
+        return CupertinoPageRoute(builder: (context) => QueryChatRes());
+
+      case querychatpro:
+        return CupertinoPageRoute(builder: (context) => QueryChatPro());
 
       default:
         return CupertinoPageRoute(builder: (context) => const SizedBox());

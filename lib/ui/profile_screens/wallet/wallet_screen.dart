@@ -17,6 +17,8 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   double? height, width;
+  double walletBalance = 100.0;
+  double winningamount = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _WalletScreenState extends State<WalletScreen> {
 
     return Scaffold(
       backgroundColor: white,
-      resizeToAvoidBottomInset: true, // Allows resizing when keyboard opens
+      resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
         title: mywalletLbl,
         index: 0,
@@ -41,6 +43,7 @@ class _WalletScreenState extends State<WalletScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Wallet Balance Card
             Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
@@ -54,9 +57,7 @@ class _WalletScreenState extends State<WalletScreen> {
                     children: [
                       Image.asset(DesignConfig.setPngPath(wallet),
                           height: 24, width: 24, color: appColor),
-                      const SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Text(
                         walletbalance,
                         style: TextStyle(
@@ -67,7 +68,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       ),
                       Spacer(),
                       Text(
-                        "₹600.00",
+                        "₹${walletBalance.toStringAsFixed(2)}",
                         style: TextStyle(
                             fontFamily: Manrope,
                             fontSize: 16,
@@ -76,9 +77,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 24,
-                  ),
+                  const SizedBox(height: 24),
                   Container(
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -95,7 +94,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         ),
                         Spacer(),
                         Text(
-                          "₹100.00",
+                          "₹${winningamount.toStringAsFixed(2)}",
                           style: TextStyle(
                               fontFamily: Manrope,
                               fontSize: 12,
@@ -108,10 +107,9 @@ class _WalletScreenState extends State<WalletScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
+            const SizedBox(height: 24),
+
+            const Text(
               "Transaction History",
               style: TextStyle(
                   fontFamily: Manrope,
@@ -119,34 +117,63 @@ class _WalletScreenState extends State<WalletScreen> {
                   color: black,
                   fontWeight: FontWeight.w600),
             ),
-            const SizedBox(
-              height: 5,
-            ),
-            transactionHistory(
-                "Refund Amount", 1000.00, true, "05 May,2024", "07:30 PM"),
-            const SizedBox(
-              height: 15,
-            ),
-            transactionHistory(
-                "Refund Amount", 1000.00, true, "05 May,2024", "07:30 PM"),
-            const SizedBox(
-              height: 15,
-            ),
-            transactionHistory(
-                "Refund Amount", 1000.00, true, "05 May,2024", "07:30 PM"),
-            const SizedBox(
-              height: 15,
-            ),
-            transactionHistory("Amount paid towards cleaning \nservice", 100.00,
-                false, "20 July,2024", "07:30 PM"),
-            const SizedBox(
-              height: 15,
-            ),
-            transactionHistory("Amount paid towards cleaning \nservice", 100.00,
-                false, "20 July,2024", "07:30 PM"),
+            const SizedBox(height: 5),
+
+            walletBalance > 0 ? _buildTransactionHistory() : _buildNoData(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTransactionHistory() {
+    return Column(
+      children: [
+        const SizedBox(height: 5),
+        transactionHistory(
+            "Refund Amount", 1000.00, true, "05 May,2024", "07:30 PM"),
+        const SizedBox(height: 15),
+        transactionHistory(
+            "Refund Amount", 100.00, true, "05 May,2024", "07:30 PM"),
+        const SizedBox(height: 15),
+        transactionHistory(
+            "Refer Amount", 2000.00, true, "20 July,2024", "07:30 PM"),
+        const SizedBox(height: 15),
+        transactionHistory("Amount paid towards cleaning \nservice", 100.00,
+            false, "05 May,2024", "07:30 PM"),
+        const SizedBox(height: 15),
+        transactionHistory("Amount paid towards cleaning \nservice", 400.00,
+            false, "05 May,2024", "07:30 PM"),
+      ],
+    );
+  }
+
+  Widget _buildNoData() {
+    return Column(
+      children: [
+        SizedBox(height: height! * 0.15),
+        Center(
+          child: Column(
+            children: [
+              Image.asset(
+                DesignConfig.setPngPath(attendance_image),
+                height: 200,
+                width: 200,
+              ),
+              SizedBox(height: 16),
+              Text(
+                "No transactions happened yet!",
+                style: TextStyle(
+                  fontFamily: Manrope,
+                  fontSize: 12,
+                  color: greayLightColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -181,12 +208,10 @@ class _WalletScreenState extends State<WalletScreen> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          const SizedBox(height: 5),
           Text(
             "$date | $time",
-            style: TextStyle(
+            style: const TextStyle(
                 fontFamily: Manrope,
                 fontSize: 10,
                 color: greayLightColor,
