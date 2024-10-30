@@ -35,17 +35,17 @@ class _NotificationFilterScreenState extends State<NotificationFilterScreen> {
         showBackButton: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 0, 15, 15),
+        padding: const EdgeInsets.fromLTRB(24.0, 0, 24, 15),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                left: 250.0,
+              padding: EdgeInsets.only(
+                left: width! / 1.55,
               ),
               child: Card(
                 color: const Color(0xFFD7EEE6),
-                child: SizedBox(
+                child: Container(
                   height: 25,
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [

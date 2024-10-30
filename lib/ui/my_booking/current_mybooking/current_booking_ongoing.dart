@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
 import 'package:maideaze/ui/global/separate_card.dart';
-import 'package:maideaze/ui/review_screen/review_screen.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/replace_service_provider.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/review_screen/review_screen.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';
 import 'package:maideaze/ui/utils/labelKeys.dart';
 
-class CurrentBookingCompleted extends StatefulWidget {
-  const CurrentBookingCompleted({super.key});
+class CurrentBookingOngoing extends StatefulWidget {
+  const CurrentBookingOngoing({super.key});
 
   @override
-  State<CurrentBookingCompleted> createState() {
-    return _CurrentBookingCompletedState();
+  State<CurrentBookingOngoing> createState() {
+    return _CurrentBookingOngoingState();
   }
 }
 
-class _CurrentBookingCompletedState extends State<CurrentBookingCompleted> {
+class _CurrentBookingOngoingState extends State<CurrentBookingOngoing> {
   double? height, width;
 
   @override
@@ -39,7 +40,7 @@ class _CurrentBookingCompletedState extends State<CurrentBookingCompleted> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -66,15 +67,15 @@ class _CurrentBookingCompletedState extends State<CurrentBookingCompleted> {
                                       horizontal: 10, vertical: 5),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: const Color.fromRGBO(
-                                        181, 228, 202, 0.25),
+                                    color:
+                                        const Color.fromRGBO(255, 153, 0, 0.15),
                                   ),
                                   child: const Text(
-                                    completedLbl,
+                                    ongoingLbl,
                                     style: TextStyle(
                                         fontFamily: Manrope,
                                         fontSize: 12,
-                                        color: appColor,
+                                        color: Color(0xffFF9900),
                                         fontWeight: FontWeight.w500),
                                   ),
                                 )
@@ -235,7 +236,7 @@ class _CurrentBookingCompletedState extends State<CurrentBookingCompleted> {
                         status: false,
                         borderColor: appColor,
                         bottom: 5,
-                        text: retainLbl,
+                        text: replacLbl,
                         fontSize: 16,
                         color: white,
                         textColor: appColor,
@@ -245,10 +246,11 @@ class _CurrentBookingCompletedState extends State<CurrentBookingCompleted> {
                         height: height,
                         width: width,
                         onPressed: () async {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => const HelperDetailed()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ReplaceServiceProvider()));
                         }),
                     const SizedBox(
                       height: 10,

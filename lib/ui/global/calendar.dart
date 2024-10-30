@@ -35,7 +35,7 @@ class _CalendarPopupState extends State<CalendarPopup> {
     final monthFormat = DateFormat("MMMM ’yy");
     return Padding(
       padding:
-          const EdgeInsets.only(top: 20.0, bottom: 20, left: 15.0, right: 5),
+          const EdgeInsets.only(top: 10.0, bottom: 0, left: 20.0, right: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -78,7 +78,7 @@ class _CalendarPopupState extends State<CalendarPopup> {
 
   Widget _buildCalendarDays() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -106,7 +106,7 @@ class _CalendarPopupState extends State<CalendarPopup> {
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 7,
-              childAspectRatio: 1,
+              childAspectRatio: 0.9,
             ),
             itemCount:
                 DateUtils.getDaysInMonth(_focusedDate.year, _focusedDate.month),

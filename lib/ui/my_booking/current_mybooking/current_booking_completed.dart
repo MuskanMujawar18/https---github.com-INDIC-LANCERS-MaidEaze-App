@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
 import 'package:maideaze/ui/global/separate_card.dart';
-import 'package:maideaze/ui/review_screen/review_screen.dart';
+import 'package:maideaze/ui/home_screen/helper%20details/helper_description.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/review_screen/review_screen.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';
 import 'package:maideaze/ui/utils/labelKeys.dart';
 
-class CurrentBookingCancelled extends StatefulWidget {
-  const CurrentBookingCancelled({super.key});
+class CurrentBookingCompleted extends StatefulWidget {
+  const CurrentBookingCompleted({super.key});
 
   @override
-  State<CurrentBookingCancelled> createState() {
-    return _CurrentBookingCancelledState();
+  State<CurrentBookingCompleted> createState() {
+    return _CurrentBookingCompletedState();
   }
 }
 
-class _CurrentBookingCancelledState extends State<CurrentBookingCancelled> {
+class _CurrentBookingCompletedState extends State<CurrentBookingCompleted> {
   double? height, width;
 
   @override
@@ -39,7 +40,7 @@ class _CurrentBookingCancelledState extends State<CurrentBookingCancelled> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -65,15 +66,16 @@ class _CurrentBookingCancelledState extends State<CurrentBookingCancelled> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 5),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color:
-                                          Color.fromRGBO(234, 124, 111, 0.25)),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color.fromRGBO(
+                                        181, 228, 202, 0.25),
+                                  ),
                                   child: const Text(
-                                    cancelledLbl,
+                                    completedLbl,
                                     style: TextStyle(
                                         fontFamily: Manrope,
                                         fontSize: 12,
-                                        color: Color(0xffD20000),
+                                        color: appColor,
                                         fontWeight: FontWeight.w500),
                                   ),
                                 )
@@ -228,6 +230,30 @@ class _CurrentBookingCancelledState extends State<CurrentBookingCancelled> {
                     ),
                     const SizedBox(
                       height: 20,
+                    ),
+                    ButtonContainer(
+                        top: 8,
+                        status: false,
+                        borderColor: appColor,
+                        bottom: 5,
+                        text: retainLbl,
+                        fontSize: 16,
+                        color: white,
+                        textColor: appColor,
+                        end: 0,
+                        circularRadius: 8,
+                        start: 0,
+                        height: height,
+                        width: width,
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const HelperDescription()));
+                        }),
+                    const SizedBox(
+                      height: 10,
                     ),
                     ButtonContainer(
                         top: 8,

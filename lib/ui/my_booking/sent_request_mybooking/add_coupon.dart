@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
-import 'package:maideaze/ui/my_booking/coupon_sent_request.dart';
+import 'package:maideaze/ui/my_booking/sent_request_mybooking/coupon_sent_request.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';

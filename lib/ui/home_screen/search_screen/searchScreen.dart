@@ -33,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
         showBackButton: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 17.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment:

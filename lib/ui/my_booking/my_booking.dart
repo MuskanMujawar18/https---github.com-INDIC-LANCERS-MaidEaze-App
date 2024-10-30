@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/botton_nav.dart';
-import 'package:maideaze/ui/my_booking/current_booking_cancelled.dart';
-import 'package:maideaze/ui/my_booking/current_booking_completed.dart';
-import 'package:maideaze/ui/my_booking/current_booking_ongoing.dart';
-import 'package:maideaze/ui/my_booking/sent_request_booking.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/current_booking_cancelled.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/current_booking_completed.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/current_booking_ongoing.dart';
+import 'package:maideaze/ui/my_booking/sent_request_mybooking/sent_request_booking.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
@@ -58,7 +58,7 @@ class _MyBookingState extends State<MyBooking>
           height: height!,
           context: context),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
             Padding(
@@ -69,11 +69,11 @@ class _MyBookingState extends State<MyBooking>
                 unselectedLabelColor: black,
                 indicatorColor: appColor,
                 indicatorWeight: 4.0,
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                     fontFamily: Manrope,
                     fontSize: 12,
                     fontWeight: FontWeight.w500),
-                unselectedLabelStyle: TextStyle(
+                unselectedLabelStyle: const TextStyle(
                     fontFamily: Manrope,
                     fontSize: 12,
                     fontWeight: FontWeight.w500),
@@ -165,7 +165,7 @@ class _MyBookingState extends State<MyBooking>
     return GestureDetector(
       onTap: onTapped,
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: greayColor)),
@@ -175,7 +175,7 @@ class _MyBookingState extends State<MyBooking>
           children: [
             Text(
               service,
-              style: TextStyle(
+              style: const TextStyle(
                   fontFamily: Manrope,
                   fontSize: 12,
                   fontWeight: FontWeight.w500),
@@ -187,14 +187,14 @@ class _MyBookingState extends State<MyBooking>
               children: [
                 Text(
                   duration,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontFamily: Manrope,
                       fontSize: 10,
                       color: greayLightColor,
                       fontWeight: FontWeight.w400),
                 ),
-                Spacer(),
-                Icon(
+                const Spacer(),
+                const Icon(
                   Icons.keyboard_arrow_right_rounded,
                   size: 16,
                 )
@@ -204,14 +204,14 @@ class _MyBookingState extends State<MyBooking>
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
                   color: type == "Ongoing"
-                      ? Color.fromRGBO(255, 153, 0, 0.15)
+                      ? const Color.fromRGBO(255, 153, 0, 0.15)
                       : type == "Completed"
-                          ? Color.fromRGBO(181, 228, 202, 0.25)
+                          ? const Color.fromRGBO(181, 228, 202, 0.25)
                           : type == "Replaced"
-                              ? Color.fromRGBO(234, 124, 111, 0.25)
+                              ? const Color.fromRGBO(234, 124, 111, 0.25)
                               : Colors
                                   .white, // Default color if none of the conditions match
 
@@ -222,11 +222,11 @@ class _MyBookingState extends State<MyBooking>
                     fontFamily: Manrope,
                     fontSize: 12,
                     color: type == "Ongoing"
-                        ? Color.fromRGBO(255, 153, 0, 1)
+                        ? const Color.fromRGBO(255, 153, 0, 1)
                         : type == "Completed"
                             ? appColor
                             : type == "Replaced"
-                                ? Color.fromRGBO(210, 0, 0, 1)
+                                ? const Color.fromRGBO(210, 0, 0, 1)
                                 : Colors
                                     .white, // Default color if none of the conditions match
 
@@ -250,7 +250,7 @@ class _MyBookingState extends State<MyBooking>
     String rupees,
   ) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: greayColor)),
@@ -285,15 +285,15 @@ class _MyBookingState extends State<MyBooking>
                       height: 12,
                       width: 12,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
                       decoration: BoxDecoration(
                           color: type == "Accepted"
-                              ? Color.fromRGBO(181, 228, 202, 0.25)
+                              ? const Color.fromRGBO(181, 228, 202, 0.25)
                               : type == "Rejected"
-                                  ? Color.fromRGBO(234, 124, 111, 0.25)
+                                  ? const Color.fromRGBO(234, 124, 111, 0.25)
                                   : Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       child: Text(
@@ -304,7 +304,7 @@ class _MyBookingState extends State<MyBooking>
                             color: type == "Accepted"
                                 ? appColor
                                 : type == "Rejected"
-                                    ? Color.fromRGBO(210, 0, 0, 1)
+                                    ? const Color.fromRGBO(210, 0, 0, 1)
                                     : Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
@@ -331,7 +331,7 @@ class _MyBookingState extends State<MyBooking>
                     ),
                     Text(
                       services,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: Manrope,
                           fontSize: 12,
                           fontWeight: FontWeight.w500),
@@ -343,7 +343,7 @@ class _MyBookingState extends State<MyBooking>
                 ),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.watch_later,
                       size: 18,
                       color: appColor,
@@ -353,7 +353,7 @@ class _MyBookingState extends State<MyBooking>
                     ),
                     Text(
                       duration,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: Manrope,
                           fontSize: 12,
                           fontWeight: FontWeight.w500),
@@ -375,7 +375,7 @@ class _MyBookingState extends State<MyBooking>
                     ),
                     Text(
                       date,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: Manrope,
                           fontSize: 12,
                           fontWeight: FontWeight.w500),
@@ -397,7 +397,7 @@ class _MyBookingState extends State<MyBooking>
                     ),
                     Text(
                       rupees,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: Manrope,
                           fontSize: 12,
                           fontWeight: FontWeight.w500),

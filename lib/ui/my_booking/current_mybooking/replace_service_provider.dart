@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
 
-import 'package:maideaze/ui/my_booking/confirmed_screen.dart';
+import 'package:maideaze/ui/my_booking/current_mybooking/confirmed_screen.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';

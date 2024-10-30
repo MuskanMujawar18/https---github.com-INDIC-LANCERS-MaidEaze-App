@@ -25,7 +25,7 @@ class ManageAddress extends StatelessWidget {
         showBackButton: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
             addressContainer("Home", "XYZ, building name, city, sate, etc."),

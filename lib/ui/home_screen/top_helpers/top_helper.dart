@@ -4,7 +4,7 @@ import 'package:maideaze/ui/global/button.dart';
 import 'package:maideaze/ui/global/helper_card.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
-import 'package:maideaze/ui/top_helpers/nearest_screen.dart';
+import 'package:maideaze/ui/home_screen/top_helpers/nearest_screen.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';
 import 'package:maideaze/ui/utils/labelKeys.dart';
@@ -206,7 +206,7 @@ class _TopHelperState extends State<TopHelper> {
     return Scaffold(
         backgroundColor: white,
         appBar: CustomAppBar(
-          title: "Top Helpers",
+          title: tophelperLbl,
           index: 0,
           toolbarHeight: 70,
           iconSize: 28,
@@ -217,7 +217,7 @@ class _TopHelperState extends State<TopHelper> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               children: [
                 Row(
@@ -360,7 +360,7 @@ class _TopHelperState extends State<TopHelper> {
     return Container(
       //color: white,
       padding: const EdgeInsets.fromLTRB(20, 15, 20, 10),
-      height: 600,
+      height: 400,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -379,7 +379,7 @@ class _TopHelperState extends State<TopHelper> {
             children: [
               SizedBox(
                 width: 120,
-                height: 280,
+                height: 240,
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: greayColor),
@@ -425,7 +425,7 @@ class _TopHelperState extends State<TopHelper> {
               const SizedBox(width: 16),
               SizedBox(
                 width: 182,
-                height: 280,
+                height: 240,
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: greayColor),
@@ -480,7 +480,7 @@ class _TopHelperState extends State<TopHelper> {
             top: 8,
             status: false,
             borderColor: appColor,
-            bottom: 5,
+            bottom: 20,
             text: applyLbl,
             fontSize: 16,
             color: appColor,
@@ -507,7 +507,7 @@ class _TopHelperState extends State<TopHelper> {
     return Container(
       //color: white,
       padding: const EdgeInsets.fromLTRB(20, 15, 20, 10),
-      //height: 600,
+      height: 420,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -526,7 +526,7 @@ class _TopHelperState extends State<TopHelper> {
             children: [
               SizedBox(
                 width: 120,
-                height: 280,
+                height: 260,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: greayColor),
@@ -580,7 +580,7 @@ class _TopHelperState extends State<TopHelper> {
               const SizedBox(width: 16),
               SizedBox(
                 width: 182,
-                height: 280,
+                height: 260,
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: greayColor),
@@ -635,7 +635,7 @@ class _TopHelperState extends State<TopHelper> {
             top: 8,
             status: false,
             borderColor: appColor,
-            bottom: 5,
+            bottom: 20,
             text: applyLbl,
             fontSize: 16,
             color: appColor,

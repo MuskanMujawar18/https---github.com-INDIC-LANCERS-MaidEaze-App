@@ -32,7 +32,7 @@ class _SelectLocationState extends State<SelectLocation> {
           showBackButton: true,
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 17.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             CustomSearchField(
                 hintText: "Enter your area, or apartment name",

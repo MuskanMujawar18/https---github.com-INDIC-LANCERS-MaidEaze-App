@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
-import 'package:maideaze/ui/helper%20details/helper_detailed.dart';
+import 'package:maideaze/ui/home_screen/helper%20details/helper_detailed.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';

@@ -56,7 +56,7 @@ class _HelperDetailedState extends State<HelperDetailed> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,67 +136,78 @@ class _HelperDetailedState extends State<HelperDetailed> {
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: greayColor)),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // const SizedBox(height: 16),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 17.0),
-                            child: const Text(
-                              "Number of Persons",
-                              style: TextStyle(
-                                  fontFamily: Manrope,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // const SizedBox(height: 16),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 12.0),
+                              child: const Text(
+                                "Number of Persons",
+                                style: TextStyle(
+                                    fontFamily: Manrope,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            height: 40,
-                            margin: EdgeInsets.only(top: 5, bottom: 5),
-                            decoration: BoxDecoration(
+                            const Spacer(),
+                            Container(
+                              height: 30,
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              margin:
+                                  EdgeInsets.only(right: 0, bottom: 5, top: 5),
+                              decoration: BoxDecoration(
                                 color: Color.fromRGBO(181, 228, 202, 0.25),
                                 borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: appColor)),
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      if (_numberOfPersons > 1) {
-                                        _numberOfPersons--;
-                                      }
-                                    });
-                                  },
-                                  icon: const Icon(
-                                    Icons.remove,
-                                    size: 14,
+                                border: Border.all(color: appColor, width: 0.5),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (_numberOfPersons > 1) {
+                                          _numberOfPersons--;
+                                        }
+                                      });
+                                    },
+                                    child: const Icon(
+                                      Icons.remove,
+                                      size: 14,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  '$_numberOfPersons',
-                                  style: const TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: Manrope,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _numberOfPersons++;
-                                    });
-                                  },
-                                  icon: const Icon(
-                                    Icons.add,
-                                    size: 14,
+                                  const SizedBox(
+                                    width: 5,
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    '$_numberOfPersons',
+                                    style: const TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: Manrope,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _numberOfPersons++;
+                                      });
+                                    },
+                                    child: const Icon(
+                                      Icons.add,
+                                      size: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ]),
                     ),
                   ),
+
                   const SizedBox(
                     height: 15,
                   ),
@@ -211,9 +222,9 @@ class _HelperDetailedState extends State<HelperDetailed> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 8),
                           Padding(
-                            padding: const EdgeInsets.only(top: 17.0),
+                            padding: const EdgeInsets.only(top: 12.0),
                             child: const Text(
                               "Number of BHK",
                               style: TextStyle(
@@ -225,28 +236,33 @@ class _HelperDetailedState extends State<HelperDetailed> {
                           Spacer(),
                           Container(
                             //width: width,
-                            height: 40,
-                            //padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
+                            height: 30,
+                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                             margin:
                                 EdgeInsets.only(right: 0, bottom: 5, top: 5),
                             decoration: BoxDecoration(
                                 color: Color.fromRGBO(181, 228, 202, 0.25),
                                 borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: appColor)),
+                                border:
+                                    Border.all(color: appColor, width: 0.5)),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                IconButton(
-                                  onPressed: () {
+                                GestureDetector(
+                                  onTap: () {
                                     setState(() {
                                       if (_numberOfBHK > 1) {
                                         _numberOfBHK--;
                                       }
                                     });
                                   },
-                                  icon: const Icon(
+                                  child: const Icon(
                                     Icons.remove,
                                     size: 14,
                                   ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
                                 ),
                                 Text(
                                   '$_numberOfBHK',
@@ -255,13 +271,16 @@ class _HelperDetailedState extends State<HelperDetailed> {
                                       fontFamily: Manrope,
                                       fontWeight: FontWeight.w500),
                                 ),
-                                IconButton(
-                                  onPressed: () {
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
                                     setState(() {
                                       _numberOfBHK++;
                                     });
                                   },
-                                  icon: const Icon(
+                                  child: const Icon(
                                     Icons.add,
                                     size: 14,
                                   ),
@@ -336,7 +355,7 @@ class _HelperDetailedState extends State<HelperDetailed> {
                       ),
                       const SizedBox(width: 16),
                       SizedBox(
-                        width: 182,
+                        width: 175,
                         height: 137,
                         child: Container(
                           decoration: BoxDecoration(
@@ -616,12 +635,16 @@ class _HelperDetailedState extends State<HelperDetailed> {
     showDialog(
       context: context,
       builder: (context) {
-        return CalendarPopup(
-          onDateSelected: (date) {
-            setState(() {
-              _selectedDate = date;
-            });
-          },
+        return SizedBox(
+          height: 338,
+          width: width,
+          child: CalendarPopup(
+            onDateSelected: (date) {
+              setState(() {
+                _selectedDate = date;
+              });
+            },
+          ),
         );
       },
     );

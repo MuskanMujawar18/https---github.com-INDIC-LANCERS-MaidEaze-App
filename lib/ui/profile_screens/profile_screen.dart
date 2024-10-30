@@ -80,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
@@ -143,11 +143,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 45, vertical: 15),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: width! / 9, vertical: width! / 22),
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: greayColor,
@@ -186,8 +186,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: 20,
                 ),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 45, vertical: 15),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: width! / 9, vertical: width! / 22),
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: greayColor,

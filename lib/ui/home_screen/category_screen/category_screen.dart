@@ -1,28 +1,24 @@
-import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
-import 'package:maideaze/ui/global/botton_nav.dart';
 import 'package:maideaze/ui/global/button.dart';
-import 'package:maideaze/ui/global/common_screen.dart';
+import 'package:maideaze/ui/global/helper_card.dart';
+import 'package:maideaze/ui/styles/color.dart';
+import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/home_screen/top_helpers/nearest_screen.dart';
+import 'package:maideaze/ui/utils/constansts.dart';
+import 'package:maideaze/ui/utils/imagesDefine.dart';
+import 'package:maideaze/ui/utils/labelKeys.dart';
 
-import '../global/helper_card.dart';
-import '../styles/color.dart';
-import '../styles/design.dart';
-import '../utils/constansts.dart';
-import '../utils/imagesDefine.dart';
-import '../utils/labelKeys.dart';
-
-class FavScreen extends StatefulWidget {
-  const FavScreen({super.key});
+class CategoryHelper extends StatefulWidget {
+  const CategoryHelper({super.key});
 
   @override
-  State<FavScreen> createState() {
-    return _FavScreenState();
+  State<CategoryHelper> createState() {
+    return _CategoryHelperState();
   }
 }
 
-class _FavScreenState extends State<FavScreen> {
+class _CategoryHelperState extends State<CategoryHelper> {
   double? height, width;
   String selectedTopic = 'Distance';
   String selectedType = 'Cooking';
@@ -136,6 +132,33 @@ class _FavScreenState extends State<FavScreen> {
         "distance": "2.5 Km",
         "rating": 4.5,
         "price": "₹5000",
+        "isFavorite": false,
+        "imageUrl": pro_image_1,
+        "rank": "gold",
+      },
+      {
+        "name": "Gaurav Singh",
+        "distance": "2.5 Km",
+        "rating": 3.5,
+        "price": "₹5000",
+        "isFavorite": true,
+        "imageUrl": pro_image_2,
+        "rank": "gold",
+      },
+      {
+        "name": "Priya Gupta",
+        "distance": "5.0 Km",
+        "rating": 4.0,
+        "price": "₹3000",
+        "isFavorite": false,
+        "imageUrl": pro_image_3,
+        "rank": "silver",
+      },
+      {
+        "name": "Pooja Roy",
+        "distance": "2.5 Km",
+        "rating": 3.5,
+        "price": "₹2000",
         "isFavorite": true,
         "imageUrl": pro_image_1,
         "rank": "gold",
@@ -154,29 +177,36 @@ class _FavScreenState extends State<FavScreen> {
         "distance": "5.0 Km",
         "rating": 4.0,
         "price": "₹3000",
-        "isFavorite": true,
+        "isFavorite": false,
         "imageUrl": pro_image_3,
         "rank": "silver",
       },
       {
-        "name": "Pooja Roy",
+        "name": "Gaurav Singh",
         "distance": "2.5 Km",
         "rating": 3.5,
-        "price": "₹2000",
+        "price": "₹5000",
         "isFavorite": true,
-        "imageUrl": pro_image_1,
+        "imageUrl": pro_image_2,
         "rank": "gold",
+      },
+      {
+        "name": "Priya Gupta",
+        "distance": "5.0 Km",
+        "rating": 4.0,
+        "price": "₹3000",
+        "isFavorite": false,
+        "imageUrl": pro_image_3,
+        "rank": "silver",
       },
     ];
 
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
-        bottomNavigationBar: BottomNav(
-            from: bottom_fav, width: width!, height: height!, context: context),
         backgroundColor: white,
         appBar: CustomAppBar(
-          title: favoritesLbl,
+          title: helperLbl,
           index: 0,
           toolbarHeight: 70,
           iconSize: 28,
@@ -184,68 +214,62 @@ class _FavScreenState extends State<FavScreen> {
           titleColor: Colors.black,
           iconColor: black,
           showBackButton: true,
-          rightIcon: IconButton(
-            icon: Image.asset(
-              DesignConfig.setPngPath(notification),
-              height: 20,
-              width: 20,
-            ),
-            onPressed: () {},
-          ),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               children: [
                 Row(
                   children: [
                     Card(
-                      child: SizedBox(
-                        height: 20,
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 3,
-                            ),
-                            Image.asset(
-                              DesignConfig.setPngPath(setting_icon),
-                              height: 12,
-                              width: 12,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                if (isFilterApplied) {
-                                  // Clear filters if cross icon is pressed
-                                  setState(() {
-                                    selectedFilters.clear();
-                                    isFilterApplied = false;
-                                  });
-                                } else {
-                                  openfiltersheet(context);
-                                }
-                              },
-                              child: const Text(
-                                " Filter ",
-                                style: TextStyle(
-                                    fontFamily: Manrope,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w500),
+                        color: isFilterApplied
+                            ? const Color.fromRGBO(181, 228, 202, 0.25)
+                            : white,
+                        child: SizedBox(
+                          height: 20,
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                width: 3,
                               ),
-                            ),
-                            isFilterApplied
-                                ? const Icon(
-                                    Icons.close,
-                                    size: 12,
-                                  )
-                                : const Icon(
-                                    Icons.arrow_drop_down,
-                                    size: 12,
-                                  )
-                          ],
-                        ),
-                      ),
-                    ),
+                              Image.asset(
+                                DesignConfig.setPngPath(setting_icon),
+                                height: 12,
+                                width: 12,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  if (isFilterApplied) {
+                                    // Clear filters if cross icon is pressed
+                                    setState(() {
+                                      selectedFilters.clear();
+                                      isFilterApplied = false;
+                                    });
+                                  } else {
+                                    openfiltersheet(context);
+                                  }
+                                },
+                                child: const Text(
+                                  " Filter ",
+                                  style: TextStyle(
+                                      fontFamily: Manrope,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              isFilterApplied
+                                  ? const Icon(
+                                      Icons.close,
+                                      size: 12,
+                                    )
+                                  : const Icon(
+                                      Icons.arrow_drop_down,
+                                      size: 12,
+                                    )
+                            ],
+                          ),
+                        )),
                     const SizedBox(
                       width: 20,
                     ),
@@ -274,7 +298,7 @@ class _FavScreenState extends State<FavScreen> {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Card(
                       child: SizedBox(
                         height: 20,
@@ -306,33 +330,26 @@ class _FavScreenState extends State<FavScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                topHelpers.isEmpty
-                    ? CommonScreen(
-                        imagePath: "nearest_not_found",
-                        title: "No favorites",
-                        titlefontSize: 12,
-                        titleFontWeight: FontWeight.w500,
-                        titlefontColor: greayLightColor)
-                    : ListView.builder(
-                        itemCount: topHelpers.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          var helper = topHelpers[index];
-                          return Container(
-                            margin: EdgeInsets.only(top: index == 0 ? 0 : 24),
-                            child: TopHelperCard(
-                              name: helper['name'],
-                              distance: helper['distance'],
-                              rating: helper['rating'],
-                              price: helper['price'],
-                              isFavorite: helper['isFavorite'],
-                              imageUrl: helper['imageUrl'],
-                              rank: helper['rank'],
-                            ),
-                          );
-                        },
+                ListView.builder(
+                  itemCount: topHelpers.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    var helper = topHelpers[index];
+                    return Container(
+                      margin: EdgeInsets.only(top: index == 0 ? 0 : 24),
+                      child: TopHelperCard(
+                        name: helper['name'],
+                        distance: helper['distance'],
+                        rating: helper['rating'],
+                        price: helper['price'],
+                        isFavorite: helper['isFavorite'],
+                        imageUrl: helper['imageUrl'],
+                        rank: helper['rank'],
                       ),
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -380,7 +397,8 @@ class _FavScreenState extends State<FavScreen> {
                         child: Container(
                           width: width,
                           padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                          margin: const EdgeInsets.only(
+                              left: 10, right: 10, top: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: selectedTopic == topic
@@ -428,7 +446,8 @@ class _FavScreenState extends State<FavScreen> {
                         },
                         child: Container(
                           width: width,
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                          margin: const EdgeInsets.only(
+                              left: 10, right: 10, top: 5),
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 10),
                           decoration: BoxDecoration(
@@ -582,7 +601,8 @@ class _FavScreenState extends State<FavScreen> {
                         },
                         child: Container(
                           width: width,
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                          margin: const EdgeInsets.only(
+                              left: 10, right: 10, top: 5),
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 10),
                           decoration: BoxDecoration(

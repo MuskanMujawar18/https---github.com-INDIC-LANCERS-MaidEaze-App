@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/botton_nav.dart';
 import 'package:maideaze/ui/global/helper_card.dart';
 import 'package:maideaze/ui/global/search_field.dart';
-import 'package:maideaze/ui/helper%20details/helper_description.dart';
+import 'package:maideaze/ui/home_screen/helper%20details/helper_description.dart';
+import 'package:maideaze/ui/home_screen/category_screen/category_screen.dart';
 import 'package:maideaze/ui/notification/notification.dart';
-import 'package:maideaze/ui/search_screen/searchScreen.dart';
-import 'package:maideaze/ui/select_location/select_location.dart';
+import 'package:maideaze/ui/home_screen/search_screen/searchScreen.dart';
+import 'package:maideaze/ui/home_screen/select_location/select_location.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
-import 'package:maideaze/ui/top_helpers/top_helper.dart';
+import 'package:maideaze/ui/home_screen/top_helpers/top_helper.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';
 
@@ -316,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const TopHelper()));
+                                            const CategoryHelper()));
                               },
                               child: Image.asset(
                                 DesignConfig.setPngPath(

@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
-import 'package:maideaze/ui/my_booking/add_coupon.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/imagesDefine.dart';
 import 'package:maideaze/ui/utils/labelKeys.dart';
 
-class SentRequestBooking extends StatefulWidget {
-  const SentRequestBooking({super.key});
+class couponSentRequestBooking extends StatefulWidget {
+  const couponSentRequestBooking({super.key});
 
   @override
-  State<SentRequestBooking> createState() {
-    return _SentRequestBookingState();
+  State<couponSentRequestBooking> createState() {
+    return _couponSentRequestBookingState();
   }
 }
 
-class _SentRequestBookingState extends State<SentRequestBooking> {
+class _couponSentRequestBookingState extends State<couponSentRequestBooking> {
   double? height, width;
 
   @override
@@ -38,8 +37,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
         ),
         body: SingleChildScrollView(
             child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -278,10 +276,10 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                             border: Border.all(color: greayColor)),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const AddCoupon()));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => const AddCoupon()));
                           },
                           child: Row(
                             children: [
@@ -289,7 +287,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                                 width: 5,
                               ),
                               Image.asset(
-                                DesignConfig.setPngPath(ticket),
+                                DesignConfig.setPngPath(percentage_circle),
                                 height: 20,
                                 width: 20,
                               ),
@@ -297,7 +295,7 @@ class _SentRequestBookingState extends State<SentRequestBooking> {
                                 width: 8,
                               ),
                               const Text(
-                                "Apply Coupon",
+                                "Coupon XYZ applied",
                                 style: TextStyle(
                                     fontFamily: Manrope,
                                     fontSize: 12,

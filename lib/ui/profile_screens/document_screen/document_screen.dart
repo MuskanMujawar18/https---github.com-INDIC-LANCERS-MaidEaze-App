@@ -34,7 +34,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
         showBackButton: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
             Card(

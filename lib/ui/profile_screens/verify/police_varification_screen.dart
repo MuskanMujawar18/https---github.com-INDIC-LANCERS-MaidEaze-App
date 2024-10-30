@@ -26,7 +26,7 @@ class PoliceVeriScreen extends StatelessWidget {
           showBackButton: true,
         ),
         body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(

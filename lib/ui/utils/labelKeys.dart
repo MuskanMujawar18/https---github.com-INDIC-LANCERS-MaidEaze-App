@@ -75,3 +75,5 @@ const String antipolicyLbl = "Anti-Discriminatory Policy";
 const String cancelLbl = "CANCEL";
 const String logoutLbl = "LOGOUT";
 const String settingLbl = "Settings";
+const String helperLbl = "Helpers";
+const String tophelperLbl = "Top Helpers";

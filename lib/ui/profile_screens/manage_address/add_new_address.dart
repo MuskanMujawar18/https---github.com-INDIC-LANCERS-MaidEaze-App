@@ -61,8 +61,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
         ),
         body: SingleChildScrollView(
             child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
