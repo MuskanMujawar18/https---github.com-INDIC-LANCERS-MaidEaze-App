@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/appBar.dart';
 import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/my_booking/sent_request_mybooking/congratulation.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/styles/design.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
@@ -275,12 +276,7 @@ class _couponSentRequestBookingState extends State<couponSentRequestBooking> {
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: greayColor)),
                         child: GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => const AddCoupon()));
-                          },
+                          onTap: () {},
                           child: Row(
                             children: [
                               const SizedBox(
@@ -328,10 +324,10 @@ class _couponSentRequestBookingState extends State<couponSentRequestBooking> {
                           height: height,
                           width: width,
                           onPressed: () async {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => const HelperDetailed()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Congratulation()));
                           })
                     ]))));
   }

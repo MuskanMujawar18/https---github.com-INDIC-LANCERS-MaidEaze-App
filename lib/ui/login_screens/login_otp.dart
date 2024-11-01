@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maideaze/ui/global/button.dart';
+import 'package:maideaze/ui/home_screen/home_page.dart';
 import 'package:maideaze/ui/mpin_screen/mpin_screen.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
@@ -12,7 +13,8 @@ import 'package:maideaze/ui/utils/stringRes.dart';
 import 'package:maideaze/ui/utils/uiutils.dart';
 
 class LoginOtpScreen extends StatefulWidget {
-  const LoginOtpScreen({super.key});
+  String verificationid;
+  LoginOtpScreen({super.key, required this.verificationid});
 
   @override
   State<LoginOtpScreen> createState() {
@@ -24,14 +26,14 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   double? height, width;
-  final _otpController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
 
   Timer? _timer;
   int _start = 120;
   bool _isResendEnabled = false;
   @override
   void dispose() {
-    _otpController.dispose();
+    otpController.dispose();
     _timer?.cancel();
     super.dispose();
   }
@@ -124,16 +126,10 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
                             padding:
                                 const EdgeInsets.only(left: 15.0, right: 10.0),
                             child: TextField(
-                                controller: _otpController,
+                                controller: otpController,
                                 maxLength: 6,
                                 textAlign: TextAlign.center,
                                 keyboardType: TextInputType.number,
-                                onChanged: (value) {
-                                  _otpController.text = value;
-                                },
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly
-                                ],
                                 decoration: InputDecoration(
                                     filled: true,
                                     fillColor: greyLight,
@@ -178,7 +174,22 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
                 height: height,
                 width: width,
                 onPressed: () async {
-                  verifyOTP();
+                  try {
+                    PhoneAuthCredential credential =
+                        await PhoneAuthProvider.credential(
+                            verificationId: widget.verificationid,
+                            smsCode: otpController.text.toString());
+                    FirebaseAuth.instance
+                        .signInWithCredential(credential)
+                        .then((value) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    });
+                  } catch (ex) {
+                    //log(ex.toString())
+                  }
+
+                  // verifyOTP();
                   // if (_otpController.text.isEmpty) {
                   //   UiUtils.setSnackBar(
                   //       "", StringsRes.fieldEmptyError, context, false,
@@ -255,7 +266,7 @@ class _LoginOtpScreenState extends State<LoginOtpScreen> {
   }
 
   bool _isFieldFilled() {
-    return _otpController.text.isNotEmpty;
+    return otpController.text.isNotEmpty;
   }
 
   void verifyOTP() async {

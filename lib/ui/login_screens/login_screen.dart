@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/global/button.dart';
@@ -5,8 +6,6 @@ import 'package:maideaze/ui/login_screens/login_otp.dart';
 import 'package:maideaze/ui/styles/color.dart';
 import 'package:maideaze/ui/utils/constansts.dart';
 import 'package:maideaze/ui/utils/labelKeys.dart';
-import 'package:maideaze/ui/utils/stringRes.dart';
-import 'package:maideaze/ui/utils/uiutils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   double? height, width;
-  final _phoneController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   Text _buildText(String text, FontWeight weight, Color color) {
     return Text(
@@ -109,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding:
                               const EdgeInsets.only(left: 15.0, right: 10.0),
                           child: TextField(
-                              controller: _phoneController,
+                              controller: phoneController,
                               keyboardType: TextInputType.phone,
                               // onChanged: (value) {
                               //   _phoneController.text = value;
@@ -158,32 +157,19 @@ class _LoginScreenState extends State<LoginScreen> {
               height: height,
               width: width,
               onPressed: () async {
-                sendOtp();
-                // if (_phoneController.text.isEmpty) {
-                //   return UiUtils.setSnackBar(
-                //       "", StringsRes.fieldEmptyError, context, false,
-                //       type: "2");
-                // } else {
-                //   // String phoneNumber = '+91${_phoneController.text}';
-
-                //   // await FirebaseAuth.instance.verifyPhoneNumber(
-                //   //   phoneNumber: phoneNumber,
-                //   //   verificationCompleted: (PhoneAuthCredential credential) {},
-                //   //   verificationFailed: (FirebaseAuthException e) {
-                //   //     UiUtils.setSnackBar("",
-                //   //         e.message ?? "Verification failed", context, false,
-                //   //         type: "2");
-                //   //   },
-                //   //   codeSent: (String verificationId, int? resendToken) {
-                //   //     LoginScreen.verify = verificationId;
-                //   Navigator.push(
-                //       context,
-                //       CupertinoPageRoute(
-                //           builder: (context) => const LoginOtpScreen()));
-                //   //       },
-                //   //       codeAutoRetrievalTimeout: (String verificationId) {},
-                //   //     );
-                // }
+                await FirebaseAuth.instance.verifyPhoneNumber(
+                    verificationCompleted: (PhoneAuthCredential credential) {},
+                    verificationFailed: (FirebaseAuthException ex) {},
+                    codeSent: (String verificationid, int? resendtoken) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginOtpScreen(
+                                    verificationid: verificationid,
+                                  )));
+                    },
+                    codeAutoRetrievalTimeout: (String verificationid) {},
+                    phoneNumber: phoneController.text.toString());
               },
             ),
             const Spacer(),
@@ -225,17 +211,17 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void sendOtp() async {
-    try {
-      if (_phoneController.text.isEmpty) {
-        UiUtils.setSnackBar("", StringsRes.fieldEmptyError, context, false,
-            type: "2");
-      } else {
-        Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => const LoginOtpScreen()));
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // void sendOtp() async {
+  //   try {
+  //     if (_phoneController.text.isEmpty) {
+  //       UiUtils.setSnackBar("", StringsRes.fieldEmptyError, context, false,
+  //           type: "2");
+  //     } else {
+  //       Navigator.push(context,
+  //           CupertinoPageRoute(builder: (context) => const LoginOtpScreen()));
+  //     }
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }

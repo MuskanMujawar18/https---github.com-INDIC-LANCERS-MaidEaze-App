@@ -62,7 +62,7 @@ class _MyBookingState extends State<MyBooking>
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 5.0, right: 100),
+              padding: EdgeInsets.only(left: 5.0, right: width! / 4),
               child: TabBar(
                 controller: _tabController,
                 labelColor: black,

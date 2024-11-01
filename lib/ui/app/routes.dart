@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:maideaze/ui/home_screen/category_screen/category_screen.dart';
 import 'package:maideaze/ui/my_booking/current_mybooking/confirmed_screen.dart';
+import 'package:maideaze/ui/my_booking/sent_request_mybooking/congratulation.dart';
 import 'package:maideaze/ui/profile_screens/setting_screen.dart';
 import 'package:maideaze/ui/profile_screens/support/query_chat_pro.dart';
 import 'package:maideaze/ui/profile_screens/support/query_chat_res.dart';
 import 'package:maideaze/ui/splash_screen.dart';
 import 'package:maideaze/ui/home_screen/top_helpers/nearest_screen.dart';
 import 'package:maideaze/ui/home_screen/top_helpers/top_helper.dart';
-
 import '../favorites_screen/fav_screen.dart';
 import '../home_screen/helper details/helper_description.dart';
 import '../home_screen/helper details/helper_detailed.dart';
@@ -100,6 +100,7 @@ class Routes {
   static const querychatres = '/querychatres';
   static const confirmedscreen = '/confirmedscreen';
   static const categoryhelper = '/categoryhelper';
+  static const congratulation = '/congratulation';
   static String currentRoute = splash;
 
   static Route<dynamic> onGenerateRouted(RouteSettings routeSettings) {
@@ -107,14 +108,14 @@ class Routes {
 
     switch (routeSettings.name) {
       case splash:
-        return CupertinoPageRoute(builder: (context) => SplashScreen());
+        return CupertinoPageRoute(builder: (context) => const SplashScreen());
       case onboarding:
         return CupertinoPageRoute(
             builder: (context) => const OnboardingScreen());
       case loginpage:
         return CupertinoPageRoute(builder: (context) => const LoginScreen());
-      case otppage:
-        return CupertinoPageRoute(builder: (context) => const LoginOtpScreen());
+      // case otppage:
+      //   return CupertinoPageRoute(builder: (context) =>  LoginOtpScreen(verificationid: ));
       case mpinscreen:
         return CupertinoPageRoute(builder: (context) => const MpinScreen());
       case homepage:
@@ -177,42 +178,48 @@ class Routes {
       case mywallet:
         return CupertinoPageRoute(builder: (context) => const WalletScreen());
       case attendancescreen:
-        return CupertinoPageRoute(builder: (context) => AttendanceScreen());
+        return CupertinoPageRoute(
+            builder: (context) => const AttendanceScreen());
       case leavedetailes:
-        return CupertinoPageRoute(builder: (context) => LeaveDetailed());
+        return CupertinoPageRoute(builder: (context) => const LeaveDetailed());
       case verifyscreen:
-        return CupertinoPageRoute(builder: (context) => VerifyScreen());
+        return CupertinoPageRoute(builder: (context) => const VerifyScreen());
       case policeverification:
-        return CupertinoPageRoute(builder: (context) => PoliceVeriScreen());
+        return CupertinoPageRoute(
+            builder: (context) => const PoliceVeriScreen());
       case supportscreen:
-        return CupertinoPageRoute(builder: (context) => SupportScreen());
+        return CupertinoPageRoute(builder: (context) => const SupportScreen());
       case helpcenter:
-        return CupertinoPageRoute(builder: (context) => HelpCenter());
+        return CupertinoPageRoute(builder: (context) => const HelpCenter());
       case queryscreen:
-        return CupertinoPageRoute(builder: (context) => QueryScreen());
+        return CupertinoPageRoute(builder: (context) => const QueryScreen());
       case faqsscreen:
-        return CupertinoPageRoute(builder: (context) => FaqScreen());
+        return CupertinoPageRoute(builder: (context) => const FaqScreen());
       case faqdetailes:
-        return CupertinoPageRoute(builder: (context) => FaqDetailes());
+        return CupertinoPageRoute(builder: (context) => const FaqDetailes());
       case serviceguidlines:
         return CupertinoPageRoute(
-            builder: (context) => ServiceGuidlinesScreen());
+            builder: (context) => const ServiceGuidlinesScreen());
       case antipolicy:
-        return CupertinoPageRoute(builder: (context) => AntiPolicyScreen());
+        return CupertinoPageRoute(
+            builder: (context) => const AntiPolicyScreen());
       case privacypolicy:
-        return CupertinoPageRoute(builder: (context) => PrivacyPolicyScreen());
+        return CupertinoPageRoute(
+            builder: (context) => const PrivacyPolicyScreen());
       case aboutus:
-        return CupertinoPageRoute(builder: (context) => AboutusScreen());
+        return CupertinoPageRoute(builder: (context) => const AboutusScreen());
       case settingscreen:
-        return CupertinoPageRoute(builder: (context) => SettingsScreen());
+        return CupertinoPageRoute(builder: (context) => const SettingsScreen());
       case confirmedscreen:
         return CupertinoPageRoute(builder: (context) => ConfirmedScreen());
       case querychatres:
-        return CupertinoPageRoute(builder: (context) => QueryChatRes());
+        return CupertinoPageRoute(builder: (context) => const QueryChatRes());
       case categoryhelper:
-        return CupertinoPageRoute(builder: (context) => CategoryHelper());
+        return CupertinoPageRoute(builder: (context) => const CategoryHelper());
       case querychatpro:
-        return CupertinoPageRoute(builder: (context) => QueryChatPro());
+        return CupertinoPageRoute(builder: (context) => const QueryChatPro());
+      case congratulation:
+        return CupertinoPageRoute(builder: (context) => Congratulation());
 
       default:
         return CupertinoPageRoute(builder: (context) => const SizedBox());
